@@ -63,6 +63,21 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Buildings\Building.cs" />
+    <Compile Include="Buildings\CoalMine.cs" />
+    <Compile Include="Buildings\Farm.cs" />
+    <Compile Include="Buildings\FishermanHuts.cs" />
+    <Compile Include="Buildings\GoldMine.cs" />
+    <Compile Include="Buildings\Hut.cs" />
+    <Compile Include="Buildings\IronMine.cs" />
+    <Compile Include="Buildings\LumberjackHut.cs" />
+    <Compile Include="Buildings\Sawmill.cs" />
+    <Compile Include="Buildings\SmallTower.cs" />
+    <Compile Include="Buildings\SteelWorks.cs" />
+    <Compile Include="Buildings\StoneMine.cs" />
+    <Compile Include="Buildings\TownHall.cs" />
+    <Compile Include="Cost.cs" />
+    <Compile Include="Field.cs" />
     <Compile Include="Hex.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -70,6 +85,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Material.cs" />
+    <Compile Include="Resource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
