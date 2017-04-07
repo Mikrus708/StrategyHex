@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Hex.Buildings
 {
+    /// <summary>
+    /// Abstrakcyjna klasa budynków.
+    /// </summary>
     public abstract class Building
     {
         protected uint baseRange;
@@ -23,7 +26,9 @@ namespace Hex.Buildings
             get { return baseRange; }
         }
     }
-
+    /// <summary>
+    /// Typy budynków (ID)
+    /// </summary>
     public enum BuildingType : ushort
     {
         Hut,
