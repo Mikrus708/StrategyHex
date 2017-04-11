@@ -34,8 +34,8 @@ namespace WpfApplication1
         private void hexdupa(object sender, RoutedEventArgs e)
         {
             Canv.Children.RemoveRange(0, Canv.Children.Count );
-            int size = 25;
-            hhg = new HexagonalHexGrig(7, Brushes.Purple, size, Canv, new Point(400,350));
+            int size = 35;
+            hhg = new HexagonalHexGrig(6, Brushes.Purple, size, Canv, new Point(400,350));
         }
 
         private void dupaClk(object sender, RoutedEventArgs e)
