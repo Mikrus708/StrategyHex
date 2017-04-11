@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -112,6 +113,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\Icon_CoalMine.png" />
+    <Resource Include="Icons\Icon_Farm.png" />
+    <Resource Include="Icons\Icon_FishermanHut.png" />
+    <Resource Include="Icons\Icon_GoldMine.png" />
+    <Resource Include="Icons\Icon_Hut.png" />
+    <Resource Include="Icons\Icon_IronMine.png" />
+    <Resource Include="Icons\Icon_LubmerjackHut.png" />
+    <Resource Include="Icons\Icon_Sawmill.png" />
+    <Resource Include="Icons\Icon_SmallTower.png" />
+    <Resource Include="Icons\Icon_SteelWorks.png" />
+    <Resource Include="Icons\Icon_StoneMine.png" />
+    <Resource Include="Icons\Icon_TownHall.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
