@@ -17,6 +17,7 @@ using System.Windows.Shapes;
 
 namespace WpfApplication1
 {
+
     public class Hex : Shape
     {
         public static readonly DependencyProperty SizeProperty = DependencyProperty.Register("Size", typeof(Double), typeof(Hex));
@@ -50,26 +51,26 @@ namespace WpfApplication1
 
             Fill = bru;                         //kolor środka           
             Stroke = stro;                      //kolor ramki
-            StrokeThickness = 1.5;              //grubośc ramki
+            StrokeThickness = 1.2;              //grubośc ramki
 
         }
 
         private void Default(object sender, MouseEventArgs e)
         {
             Fill = bru;
-            //StrokeThickness /= 1.2;
+            StrokeThickness /= 2;
             Stroke = stro;
         }
 
         private void Highlight(object sender, MouseEventArgs e)
         {
-            Stroke = Brushes.Green;
-            //StrokeThickness *= 1.2;
+            Stroke = Brushes.Gold;
+            StrokeThickness *= 2;
         }
 
         private void Klik(object sender, MouseButtonEventArgs e)
         {
-           
+            
             bru = Fill = Brushes.Green;
         }
 
@@ -108,12 +109,13 @@ namespace WpfApplication1
 
         public HexGrid(int r, int c, Brush b, int Size, Canvas Canv, MouseButtonEventHandler HexFunc = null) : base()
         {
-
+            Size++;
+            Size++;
             int sqrt2 = Convert.ToInt32(Size * Math.Sqrt(3) / 2);
             Hex[,] hexgrid = new Hex[c, r];
             for (int j = 0; j < hexgrid.GetLength(1); ++j)
                 for (int i = 0; i < hexgrid.GetLength(0); ++i)
-                    hexgrid[i, j] = new Hex(new Point(Size + 3 * i * Size + 3 * (j % 2) * Size / 2, Size + j * sqrt2), Size, b, Canv);
+                    hexgrid[i, j] = new Hex(new Point(Size + 3 * i * Size + 3 * (j % 2) * Size / 2, Size + j * sqrt2), Size-2, b, Canv);
             hexG = hexgrid;
 
         }
@@ -134,7 +136,7 @@ namespace WpfApplication1
             p.Fill = Brushes.Red;
 
             Canv.Children.Add(p);
-            double sqrt = Size * Math.Sqrt(3) / 2;
+            double sqrt = (Size + 2) * Math.Sqrt(3) / 2;
             hexG = new Hex[2 * n - 1][];
             for (int i = 0; i < n; i++)
             {
@@ -144,8 +146,8 @@ namespace WpfApplication1
             for (int i = 0; i < n - 1; i++)
                 for (int j = 0; j < hexG[i].Length; j++)
                 {
-                    hexG[i][j] = new Hex(new Point(Center.X - (n - 1 - i) * Size * 3 / 2, Center.Y - (n - 1 + i * 2) * sqrt + 2 * j * sqrt + i % 2 * sqrt + 2 * (i / 2 * sqrt)), Size, b, Canv);
-                    hexG[hexG.Length - 1 - i][j] = new Hex(new Point(Center.X + (n - 1 - i) * Size * 3 / 2, Center.Y - (n - 1 + i * 2) * sqrt + 2 * j * sqrt + i % 2 * sqrt + 2 * (i / 2 * sqrt)), Size, b, Canv);
+                    hexG[i][j] = new Hex(new Point(Center.X - (n - 1 - i) * (Size + 2) * 3 / 2 , Center.Y - (n - 1 + i * 2) * sqrt + 2 * j * sqrt + i % 2 * sqrt + 2 * (i / 2 * sqrt)), Size, b, Canv);
+                    hexG[hexG.Length - 1 - i][j] = new Hex(new Point(Center.X + (n - 1 - i) * (Size + 2) * 3 / 2 , Center.Y - (n - 1 + i * 2) * sqrt + 2 * j * sqrt + i % 2 * sqrt + 2 * (i / 2 * sqrt)), Size, b, Canv);
                 }
             for (int i = 0; i < 2 * n - 1; i++)
             {
