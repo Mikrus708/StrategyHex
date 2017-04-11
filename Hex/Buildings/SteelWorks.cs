@@ -10,7 +10,7 @@ namespace Hex.Buildings
     {
         public override Cost BuildCost
         {
-            get { return new Cost(new MaterialType[] { MaterialType.Wood, MaterialType.Stone }, new uint[] { 300, 200 }); }
+            get { return new Cost(); }
         }
         public override BuildingType Type
         {
@@ -18,7 +18,7 @@ namespace Hex.Buildings
         }
         public override Cost UpkeepCost
         {
-            get { return new Cost(new MaterialType[] { MaterialType.Coal }, new uint[] { 5 }); }
+            get { return new Cost(); }
         }
     }
 }

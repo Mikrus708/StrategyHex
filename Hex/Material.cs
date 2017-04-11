@@ -24,6 +24,17 @@ namespace Hex
             this.ammount = ammount;
         }
         /// <summary>
+        /// Pomniejsza surowiec o ammount, ale nie więcej niż wynosi jego aktualna ilość. Zwraca nową strukturę surowca o tym samym typie i ilości takiej jaką udało się usunąć.
+        /// </summary>
+        /// <param name="ammount">Ile pobrać</param>
+        /// <returns>Nowa struktura z pobraną wartością</returns>
+        public Material Take(uint ammount)
+        {
+            Material result = new Material(type, Math.Min(this.ammount, ammount));
+            this.ammount -= Math.Min(this.ammount, ammount);
+            return result;
+        }
+        /// <summary>
         /// Tworzy strukturę surowca będącą kopią podanego argumentu.
         /// </summary>
         /// <param name="material">Struktura do skopiowania</param>
@@ -32,13 +43,21 @@ namespace Hex
             type = material.type;
             ammount = material.ammount;
         }
+        public static Material operator +(Material material, uint ammount)
+        {
+            return new Material(material.type, material.ammount + ammount);
+        }
+        public static Material operator -(Material material, uint ammount)
+        {
+            return new Material(material.type, material.ammount > ammount ? material.ammount - ammount : 0);
+        }
         /// <summary>
         /// Tworzy strukturę surowca na podstawie danego zasobu. Zachowuje ilość i przekształca typ zasobu do odpiwiedniego typu surowca.
         /// </summary>
         /// <param name="resource">Zasób do przekształcenia</param>
         public Material (Resource resource)
         {
-            type = GetType(resource.Type);
+            type = GetTypeOfMaterial(resource.Type);
             ammount = resource.Ammount;
         }
         /// <summary>
@@ -46,16 +65,16 @@ namespace Hex
         /// </summary>
         /// <param name="resource">Zasób do przekształcenia</param>
         /// <returns>Odpowiadający typ surowca</returns>
-        public static MaterialType GetType(Resource resource)
+        public static MaterialType GetTypeOfMaterial(Resource resource)
         {
-            return GetType(resource.Type);
+            return GetTypeOfMaterial(resource.Type);
         }
         /// <summary>
         /// Zwraca typ surowca odpowiadający danemu typowi zasobu.
         /// </summary>
         /// <param name="type">Typ zasobu</param>
         /// <returns>Odpowiadający typ surowca</returns>
-        public static MaterialType GetType(ResourceType type)
+        public static MaterialType GetTypeOfMaterial(ResourceType type)
         {
             switch (type)
             {
@@ -72,19 +91,14 @@ namespace Hex
                     return MaterialType.IronOre;
                 case ResourceType.Coal:
                     return MaterialType.Coal;
+                default:
+                    throw new NotImplementedException($"ResourceType.{type.ToString()} niezaimplementowany w Material.GetType()");
             }
-            throw new Exception("ResourceType niezdefiniowany w Material.GetType()");
         }
-        /// <summary>
-        /// Typ surowca.
-        /// </summary>
         public MaterialType Type
         {
             get { return type; }
         }
-        /// <summary>
-        /// Ilość surowca.
-        /// </summary>
         public uint Ammount
         {
             get { return ammount; }
