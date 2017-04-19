@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hex.Buildings;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WpfApplication1
+namespace WpfHex
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -25,8 +26,8 @@ namespace WpfApplication1
         public MainWindow()
         {
             InitializeComponent();
-            
-            
+            initComboBuild();
+
         }
 
 
@@ -36,6 +37,21 @@ namespace WpfApplication1
             Canv.Children.RemoveRange(0, Canv.Children.Count );
             int size = 35;
             hhg = new HexagonalHexGrig(6, Brushes.Purple, size, Canv, new Point(400,350));
+            foreach (var tabh in hhg.hexG)
+            {
+                foreach (var he in tabh)
+                {
+                    he.MouseDown += build;
+                }
+            }
+        }
+
+        private void build(object sender, MouseButtonEventArgs e)
+        {
+            Hex h = (sender as Hex);
+            h.HexField.Build(Building.FactorBuilding((BuildingType)(BuildingComboBox.SelectedItem)));
+            h.bru = h.Fill = new ImageBrush(new BitmapImage(new Uri($@"D:\Visual Studio\Source\StrategyHex\Hex\icons\icon_{h.HexField.Building.Type.ToString()}.png")));
+
         }
 
         private void dupaClk(object sender, RoutedEventArgs e)
@@ -52,6 +68,14 @@ namespace WpfApplication1
             ComboBox c = sender as ComboBox;
             actual = (Color)ColorConverter.ConvertFromString((c.SelectedItem as ComboBoxItem).Content as string);
 
+        }
+
+        private void initComboBuild()
+        {
+            foreach (var item in Enum.GetValues(typeof(BuildingType)))
+            {
+                BuildingComboBox.Items.Add(item);
+            }
         }
 
         private void button2_Click(object sender, RoutedEventArgs e)

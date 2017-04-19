@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hex;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 
-namespace WpfApplication1
+namespace WpfHex
 {
 
     public class Hex : Shape
@@ -26,7 +27,9 @@ namespace WpfApplication1
         public int i = 10;
         public Brush bru = Brushes.RoyalBlue;
         public Brush stro = Brushes.Black;
+        public Image HexImage = new Image();
         private double size;
+        public Field HexField = new Field(FiledType.Grass);
         public Hex() { }
         public Hex(Point center, double Size, Brush b, Canvas c = null, MouseButtonEventHandler HexFunc = null)
         {
@@ -52,7 +55,6 @@ namespace WpfApplication1
             Fill = bru;                         //kolor środka           
             Stroke = stro;                      //kolor ramki
             StrokeThickness = 1.2;              //grubośc ramki
-
         }
 
         private void Default(object sender, MouseEventArgs e)
@@ -74,6 +76,7 @@ namespace WpfApplication1
             bru = Fill = Brushes.Green;
         }
 
+        
 
         protected override Geometry DefiningGeometry
         {

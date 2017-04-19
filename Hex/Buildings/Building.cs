@@ -13,6 +13,38 @@ namespace Hex.Buildings
     public abstract class Building
     {
         protected uint baseRange;
+        public static Building FactorBuilding(BuildingType typ)
+        {
+            switch (typ)
+            {
+                case BuildingType.Hut:
+                    return new Hut();
+                case BuildingType.TownHall:
+                    return new TownHall();
+                case BuildingType.SmallTower:
+                    return new SmallTower();
+                case BuildingType.Sawmill:
+                    return new Sawmill();
+                case BuildingType.StoneMine:
+                    return new StoneMine();
+                case BuildingType.Farm:
+                    return new Farm();
+                case BuildingType.IronMine:
+                    return new IronMine();
+                case BuildingType.CoalMine:
+                    return new CoalMine();
+                case BuildingType.SteelWorks:
+                    return new SteelWorks();
+                case BuildingType.FishermanHut:
+                    return new FishermanHut();
+                case BuildingType.GoldMine:
+                    return new GoldMine();
+                case BuildingType.LumberjackHut:
+                    return new LumberjackHut();
+                default:
+                    throw new NotImplementedException("Nie zaimplementowano w FactorBuilding danego typu chuju.");
+            }
+        }
         public virtual Cost BuildCost
         {
             get { return null; }
