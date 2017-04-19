@@ -25,10 +25,40 @@ namespace WpfApplication1
         public MainWindow()
         {
             InitializeComponent();
-            
+            this.KeyDown += Arrows;
+           // Canv.Key
+           // Canv.key
             
         }
 
+
+
+        private void Arrows(object sender, KeyEventArgs e)
+        { 
+            switch (e.Key)
+            {
+                case Key.W:
+                    {
+                        Canv.Margin = new Thickness(Canv.Margin.Left, Canv.Margin.Top - 10, Canv.Margin.Right, Canv.Margin.Bottom + 10);
+                        break;
+                    }
+                case Key.S:
+                    {
+                        Canv.Margin = new Thickness(Canv.Margin.Left, Canv.Margin.Top + 10, Canv.Margin.Right, Canv.Margin.Bottom - 10);
+                        break;
+                    }
+                case Key.A:
+                    {
+                        Canv.Margin = new Thickness(Canv.Margin.Left - 10, Canv.Margin.Top, Canv.Margin.Right + 10, Canv.Margin.Bottom);
+                        break;
+                    }
+                case Key.D:
+                    {
+                        Canv.Margin = new Thickness(Canv.Margin.Left + 10, Canv.Margin.Top, Canv.Margin.Right - 10, Canv.Margin.Bottom);
+                        break;
+                    }
+            }
+        }
 
 
         private void hexdupa(object sender, RoutedEventArgs e)
@@ -50,7 +80,11 @@ namespace WpfApplication1
         private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBox c = sender as ComboBox;
-            actual = (Color)ColorConverter.ConvertFromString((c.SelectedItem as ComboBoxItem).Content as string);
+            try
+            {
+                actual = (Color)ColorConverter.ConvertFromString((c.SelectedItem as ComboBoxItem).Content as string);
+            }
+            catch { }
 
         }
 

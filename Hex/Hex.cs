@@ -101,8 +101,41 @@ namespace WpfApplication1
             }
         }
     }
+    public class Board : Canvas
+    {
+        public Board ()
+        {
+            this.KeyDown += Arrows;
+        }
 
-    public class HexGrid : Canvas
+        private void Arrows(object sender, KeyEventArgs e)
+        {
+            switch(e.Key)
+            {
+                case Key.Up:
+                {
+                        this.Margin = new Thickness(Margin.Left, Margin.Top - 10, Margin.Right, Margin.Bottom + 10);
+                    break;
+                }
+                case Key.Down:
+                    {
+                        this.Margin = new Thickness(Margin.Left, Margin.Top + 10, Margin.Right, Margin.Bottom - 10);
+                        break;
+                    }
+                case Key.Left:
+                    {
+                        this.Margin = new Thickness(Margin.Left - 10, Margin.Top, Margin.Right + 10, Margin.Bottom);
+                        break;
+                    }
+                case Key.Right:
+                    {
+                        this.Margin = new Thickness(Margin.Left + 10, Margin.Top , Margin.Right - 10, Margin.Bottom);
+                        break;
+                    }
+            }
+        }
+    }
+    public class HexGrid : Board
     {
         public Hex[,] hexG = null;
         public Hex center;
@@ -121,7 +154,7 @@ namespace WpfApplication1
         }
     }
 
-    public class HexagonalHexGrig : Canvas
+    public class HexagonalHexGrig : Board
     {
         public Hex[][] hexG;
         public Hex Center;
