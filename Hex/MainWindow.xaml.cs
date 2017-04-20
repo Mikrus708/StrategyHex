@@ -23,17 +23,28 @@ namespace WpfHex
     {
         Color actual = Colors.Chartreuse;
         HexagonalHexGrig hhg;
+        double zoom = 1;
+
         public MainWindow()
         {
             InitializeComponent();
             initComboBuild();
             this.KeyDown += Arrows;
+            this.MouseWheel += Zoom;
+            
            // Canv.Key
            // Canv.key
             
         }
 
-
+        private void Zoom(object sender, MouseWheelEventArgs e)
+        {
+            if (e.Delta > 0 && zoom == 4) return;
+            if (e.Delta < 0 && zoom == 0.25) return;
+            zoom *= Math.Pow(2,Math.Sign(e.Delta));
+            ScaleTransform st = new ScaleTransform(zoom, zoom, e.GetPosition(Canv).X, e.GetPosition(Canv).Y);
+            Canv.RenderTransform = st;
+        }
 
         private void Arrows(object sender, KeyEventArgs e)
         { 
