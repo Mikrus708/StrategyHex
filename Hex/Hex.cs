@@ -59,7 +59,7 @@ namespace WpfHex
 
         private void Default(object sender, MouseEventArgs e)
         {
-            Fill = bru;
+            //Fill = bru;
             StrokeThickness /= 2;
             Stroke = stro;
         }
@@ -104,9 +104,9 @@ namespace WpfHex
             }
         }
     }
-    public class Board : Canvas
+    public class BoardDontUse : Canvas
     {
-        public Board ()
+        public BoardDontUse ()
         {
             this.KeyDown += Arrows;
         }
@@ -138,7 +138,7 @@ namespace WpfHex
             }
         }
     }
-    public class HexGrid : Board
+    public class HexGrid : BoardDontUse
     {
         public Hex[,] hexG = null;
         public Hex center;
@@ -157,7 +157,7 @@ namespace WpfHex
         }
     }
 
-    public class HexagonalHexGrig : Board
+    public class HexagonalHexGrig : BoardDontUse
     {
         public Hex[][] hexG;
         public Hex Center;

@@ -14,7 +14,9 @@
             </ColumnDefinition>
             <ColumnDefinition Width="400*"/>
         </Grid.ColumnDefinitions>
-        <Canvas Name="Canv" MinWidth="200" MinHeight="150" Grid.Column="1" Margin="0,0,10,10"/>
+        <Canvas Name="Canv" MinWidth="200" MinHeight="150" Grid.Column="1" Margin="0,0,10,10">
+
+        </Canvas>
         <Rectangle Fill="PaleGreen" Grid.Column="0" HorizontalAlignment="Left" Width="200" Margin="0,-20,0,10"/>
 
         <Button x:Name="button" Content="RectGrid" HorizontalAlignment="Left" Margin="63,56,0,0" VerticalAlignment="Top" Width="75" Click="dupaClk"/>
@@ -40,6 +42,8 @@
         <Button x:Name="button2" Content="Button" HorizontalAlignment="Left" Margin="40,424,0,0" VerticalAlignment="Top" Width="75" Click="button2_Click"/>
         <Label x:Name="label3" Content="HexGrid colorer&#xD;&#xA;" HorizontalAlignment="Left" Margin="40,270,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="BuildingComboBox" HorizontalAlignment="Left" Margin="18,449,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0"/>
+        <Slider x:Name="slider1" HorizontalAlignment="Left" Margin="18,493,0,0" VerticalAlignment="Top" Width="148" RenderTransformOrigin="0.331,0.5" Value="1" Maximum="4" Minimum="0.25"/>
+
     </Grid>
 
 </Window>
