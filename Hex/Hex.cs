@@ -199,6 +199,20 @@ namespace WpfHex
                 hexG[n - 1][i] = new Hex(new Point(Center.X, Center.Y + 2 * (-n + i + 1) * sqrt), Size, b, new Field(n - 1, i), Canv);
             }
         }
+        public IEnumerable<Hex> Hexes
+        {
+            get
+            {
+                foreach (var hexTab in hexG)
+                {
+                    foreach (var h in hexTab)
+                    {
+                        yield return h;
+                    }
+                }
+                yield break;
+            }
+        }
         public Hex this[int x, int y, int z]
         {
             get

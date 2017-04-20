@@ -25,14 +25,14 @@ namespace Hex
         public Field()
         {
             x = y = 0;
-            top = 0;
+            top = 8;
         }
         public Field(int _x, int _y, FieldType type = FieldType.Grass)
         {
             x = _x;
             y = _y;
             this.type = type;
-            top = 0;
+            top = 8;
         }
         public int X
         {
@@ -125,44 +125,62 @@ namespace Hex
         /// </summary>
         /// <param name="resource">Zasób do dodania</param>
         /// <returns>Czy udało się dodać zasób</returns>
-        public bool PushResource(Resource resource)
+        public bool AddResource(Resource resource)
         {
-            if (top < MAXSIZE)
+            int lay = Resource.GetLayer(resource.Type);
+            if (stack[lay].Empty || stack[lay].Type == resource.Type)
             {
-                stack[top] = resource;
-                ++top;
+                stack[lay] = resource + stack[lay].Ammount;
+                if (lay < top && stack[lay].Ammount != 0)
+                {
+                    top = (byte)lay;
+                }
                 return true;
             }
             return false;
         }
         /// <summary>
-        /// Usuwa zasób z wierchu stosu.
-        /// </summary>
-        public void PopResource()
-        {
-            top -= top > 0 ? (byte)1 : (byte)0;
-        }
-        /// <summary>
         /// Zwraca surowiec z wierzchu stosu.
         /// </summary>
         /// <returns></returns>
-        public Resource? PeekResource()
+        public Resource? PeekResource
         {
-            return top == 0 ? (Resource?)null : stack[top - 1];
+            get
+            {
+                while (stack[top].Ammount == 0 && top < 8) ++top;
+                return top == 8 ? null : (Resource?)stack[top];
+            }
         }
         /// <summary>
         /// Ile surowców znaduje się na polu.
         /// </summary>
         public int NumberOfResources
         {
-            get { return top; }
+            get
+            {
+                int i = 0;
+                foreach (var res in stack)
+                {
+                    if (res.Ammount > 0)
+                        ++i;
+                }
+                return i;
+            }
+        }
+        public bool CanBeBuild(BuildingType btype)
+        {
+            if (type != FieldType.Grass)
+            {
+                return false;
+            }
+            return true;
         }
         /// <summary>
         /// Czy nie ma już surowców.
         /// </summary>
         public bool OutOfResources
         {
-            get { return top == 0; }
+            get { return NumberOfResources == 0; }
         }
         /// <summary>
         /// Surowce znajdujące się na polu.
@@ -171,9 +189,10 @@ namespace Hex
         {
             get
             {
-                for (int i = top - 1; i >= 0; --i)
+                for (int i = 0; i < 8; ++i)
                 {
-                    yield return stack[i];
+                    if (stack[i].Ammount != 0)
+                        yield return stack[i];
                 }
                 yield break;
             }
@@ -192,7 +211,7 @@ namespace Hex
         /// <returns>Czy udało się dodać budynek</returns>
         public bool Build(Building building)
         {
-            if (this.building != null)
+            if (this.building != null || !CanBeBuild(building.Type))
             {
                 return false;
             }

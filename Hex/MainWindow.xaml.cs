@@ -81,14 +81,12 @@ namespace WpfHex
             int size = 35;
             hhg = new HexagonalHexGrig(6, Brushes.Purple, size, Canv, new Point(400,350));
             var ran = new Random();
-            foreach (var tabh in hhg.hexG)
+            foreach (var he in hhg.Hexes)
             {
-                foreach (var he in tabh)
-                {
-                    he.MouseDown += build;
-                    he.Field.Type = (FieldType)(ran).Next(0, Enum.GetValues(typeof(FieldType)).Length);
-                    he.bru = he.Fill = he.Field.CombinedBrush;
-                }
+                he.MouseDown += build;
+                he.Field.Type = (FieldType)(ran).Next(0, Enum.GetValues(typeof(FieldType)).Length);
+                he.Field.AddResource(new Resource((ResourceType)(ran).Next(0, Enum.GetValues(typeof(ResourceType)).Length), (uint)ran.Next(100, 1000)));
+                he.bru = he.Fill = he.Field.CombinedBrush;
             }
         }
 

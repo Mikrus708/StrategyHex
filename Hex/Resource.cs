@@ -78,6 +78,25 @@ namespace Hex
             this.ammount -= Math.Min(this.ammount, ammount);
             return result;
         }
+        static public int GetLayer(ResourceType type)
+        {
+            switch (type)
+            {
+                case ResourceType.Forest:
+                case ResourceType.Grain:
+                case ResourceType.Fishes:
+                    return 0;
+                case ResourceType.Coal:
+                case ResourceType.Stone:
+                    return 1;
+                case ResourceType.Iron:
+                    return 2;
+                case ResourceType.Gold:
+                    return 3;
+                default:
+                    throw new NotImplementedException($"Brakuje implenetacji dla typu {type} w GetLayer()");
+            }
+        }
         /// <summary>
         /// Czy zasób jest pusty.
         /// </summary>
