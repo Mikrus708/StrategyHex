@@ -1,4 +1,5 @@
-﻿using Hex.Buildings;
+﻿using Hex;
+using Hex.Buildings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -91,6 +92,11 @@ namespace WpfHex
         private void build(object sender, MouseButtonEventArgs e)
         {
             Hex h = (sender as Hex);
+#if DEBUG
+#warning w celach debugowania budowanie ustawia losowy teren
+            h.HexField.Type = (FieldType)(new Random()).Next(0, Enum.GetValues(typeof(FieldType)).Length);
+#endif
+
             h.HexField.Build(Building.FactorBuilding((BuildingType)(BuildingComboBox.SelectedItem)));
             h.bru = h.Fill = h.HexField.CombinedBrush;
         }

@@ -20,12 +20,12 @@ namespace Hex
         Resource[] stack = new Resource[MAXSIZE];
         byte top;
         Building building = null;
-        FiledType type;
+        FieldType type;
         public Field()
         {
             top = 0;
         }
-        public Field(FiledType type)
+        public Field(FieldType type)
         {
             this.type = type;
             top = 0;
@@ -34,7 +34,10 @@ namespace Hex
         {
             get
             {
-                return new SolidColorBrush(colorByType());
+                return new ImageBrush
+                {
+                    ImageSource = new BitmapImage(new Uri($@"pack://application:,,,/Resources/HexFields/{Type}.png"))
+                };
             }
         }
         public System.Windows.Media.Brush CombinedBrush
@@ -72,16 +75,16 @@ namespace Hex
             System.Drawing.Color col;
             switch (Type)
             {
-                case FiledType.Grass:
+                case FieldType.Grass:
                     col = System.Drawing.Color.LightGreen;
                     break;
-                case FiledType.Mountain:
+                case FieldType.Mountain:
                     col = System.Drawing.Color.Gray;
                     break;
-                case FiledType.Sea:
+                case FieldType.Sea:
                     col = System.Drawing.Color.Blue;
                     break;
-                case FiledType.Forest:
+                case FieldType.Forest:
                     col = System.Drawing.Color.DarkGreen;
                     break;
                 default:
@@ -89,7 +92,7 @@ namespace Hex
             }
             return System.Windows.Media.Color.FromRgb(col.R, col.G, col.B);
         }
-        public FiledType Type
+        public FieldType Type
         {
             get { return type; }
             set { type = value; }
@@ -184,7 +187,7 @@ namespace Hex
     /// <summary>
     /// Typy pól
     /// </summary>
-    public enum FiledType : byte
+    public enum FieldType : byte
     {
         Grass,
         Mountain,

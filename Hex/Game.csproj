@@ -129,6 +129,12 @@
     <Resource Include="Resources\HexImage\StoneMine.png" />
     <Resource Include="Resources\HexImage\TownHall.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\HexFields\forest.png" />
+    <Resource Include="Resources\HexFields\grass.png" />
+    <Resource Include="Resources\HexFields\mountain.png" />
+    <Resource Include="Resources\HexFields\sea.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
