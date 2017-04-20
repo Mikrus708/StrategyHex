@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using Hex.Buildings;
+using System.Drawing;
 
 namespace Hex
 {
@@ -18,10 +19,19 @@ namespace Hex
         byte top;
         Building building = null;
         FiledType type;
+        public Field() { }
         public Field(FiledType type)
         {
             this.type = type;
             top = 0;
+        }
+        public System.Windows.Media.Brush Brush
+        {
+            get
+            {
+                throw new NotImplementedException("Właściwość Brush w klasie Field jest niezaimplementowana");
+                return null;
+            }
         }
         public FiledType Type
         {

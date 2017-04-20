@@ -29,7 +29,7 @@ namespace WpfHex
         public Brush stro = Brushes.Black;
         public Image HexImage = new Image();
         private double size;
-        public Field HexField = new Field(FiledType.Grass);
+        public Field HexField = new Field();
         public Hex() { }
         public Hex(Point center, double Size, Brush b, Canvas c = null, MouseButtonEventHandler HexFunc = null)
         {

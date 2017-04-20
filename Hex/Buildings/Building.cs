@@ -4,6 +4,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace Hex.Buildings
 {
@@ -43,6 +45,16 @@ namespace Hex.Buildings
                     return new LumberjackHut();
                 default:
                     throw new NotImplementedException("Nie zaimplementowano w FactorBuilding danego typu chuju.");
+            }
+        }
+        public virtual System.Windows.Media.Brush Brush
+        {
+            get
+            {
+                return new ImageBrush
+                {
+                    ImageSource = new BitmapImage(new Uri($@"pack://application:,,,/Resources/HexImage/{Type}.png"))
+                };
             }
         }
         public virtual Cost BuildCost

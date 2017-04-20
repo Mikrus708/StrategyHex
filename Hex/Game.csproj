@@ -87,14 +87,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Material.cs" />
-    <Compile Include="Resource.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resource.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -103,6 +103,7 @@
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
@@ -115,18 +116,18 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icons\Icon_CoalMine.png" />
-    <Resource Include="Icons\Icon_Farm.png" />
-    <Resource Include="Icons\Icon_FishermanHut.png" />
-    <Resource Include="Icons\Icon_GoldMine.png" />
-    <Resource Include="Icons\Icon_Hut.png" />
-    <Resource Include="Icons\Icon_IronMine.png" />
-    <Resource Include="Icons\Icon_LubmerjackHut.png" />
-    <Resource Include="Icons\Icon_Sawmill.png" />
-    <Resource Include="Icons\Icon_SmallTower.png" />
-    <Resource Include="Icons\Icon_SteelWorks.png" />
-    <Resource Include="Icons\Icon_StoneMine.png" />
-    <Resource Include="Icons\Icon_TownHall.png" />
+    <Resource Include="Resources\HexImage\CoalMine.png" />
+    <Resource Include="Resources\HexImage\Farm.png" />
+    <Resource Include="Resources\HexImage\FishermanHut.png" />
+    <Resource Include="Resources\HexImage\GoldMine.png" />
+    <Resource Include="Resources\HexImage\Hut.png" />
+    <Resource Include="Resources\HexImage\IronMine.png" />
+    <Resource Include="Resources\HexImage\LubmerjackHut.png" />
+    <Resource Include="Resources\HexImage\Sawmill.png" />
+    <Resource Include="Resources\HexImage\SmallTower.png" />
+    <Resource Include="Resources\HexImage\SteelWorks.png" />
+    <Resource Include="Resources\HexImage\StoneMine.png" />
+    <Resource Include="Resources\HexImage\TownHall.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

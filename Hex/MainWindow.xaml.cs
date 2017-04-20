@@ -26,6 +26,7 @@ namespace WpfHex
         public MainWindow()
         {
             InitializeComponent();
+            initComboBuild();
             this.KeyDown += Arrows;
            // Canv.Key
            // Canv.key
@@ -80,8 +81,7 @@ namespace WpfHex
         {
             Hex h = (sender as Hex);
             h.HexField.Build(Building.FactorBuilding((BuildingType)(BuildingComboBox.SelectedItem)));
-            h.bru = h.Fill = new ImageBrush(new BitmapImage(new Uri($@"D:\Visual Studio\Source\StrategyHex\Hex\icons\icon_{h.HexField.Building.Type.ToString()}.png")));
-
+            h.bru = h.Fill = h.HexField.Building.Brush;
         }
 
         private void dupaClk(object sender, RoutedEventArgs e)
