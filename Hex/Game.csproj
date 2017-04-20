@@ -122,7 +122,7 @@
     <Resource Include="Resources\HexImage\GoldMine.png" />
     <Resource Include="Resources\HexImage\Hut.png" />
     <Resource Include="Resources\HexImage\IronMine.png" />
-    <Resource Include="Resources\HexImage\LubmerjackHut.png" />
+    <Resource Include="Resources\HexImage\LumberjackHut.png" />
     <Resource Include="Resources\HexImage\Sawmill.png" />
     <Resource Include="Resources\HexImage\SmallTower.png" />
     <Resource Include="Resources\HexImage\SteelWorks.png" />
