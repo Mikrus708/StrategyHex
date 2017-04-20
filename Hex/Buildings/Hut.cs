@@ -21,12 +21,5 @@ namespace Hex.Buildings
         {
             get { return BuildingType.Hut; }
         }
-        public override Image Image
-        {
-            get
-            {
-                return (Image)Resources.ResourceManager.GetObject("Icon_Hut");
-            }
-        }
     }
 }

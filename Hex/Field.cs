@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Hex.Buildings;
 using System.Drawing;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace Hex
 {
@@ -19,19 +21,73 @@ namespace Hex
         byte top;
         Building building = null;
         FiledType type;
-        public Field() { }
+        public Field()
+        {
+            top = 0;
+        }
         public Field(FiledType type)
         {
             this.type = type;
             top = 0;
         }
-        public System.Windows.Media.Brush Brush
+        public System.Windows.Media.Brush FieldBrush
         {
             get
             {
-                throw new NotImplementedException("Właściwość Brush w klasie Field jest niezaimplementowana");
-                return null;
+                return new SolidColorBrush(colorByType());
             }
+        }
+        public System.Windows.Media.Brush CombinedBrush
+        {
+            get
+            {
+                DrawingBrush brush = new DrawingBrush();
+                DrawingGroup checkersDrawingGroup = new DrawingGroup();
+                int x = 100;
+                int y = 100;
+                GeometryDrawing fieldDraw =
+                    new GeometryDrawing(
+                        FieldBrush,
+                        null,
+                        new RectangleGeometry(new System.Windows.Rect(0, 0, x, y)));
+                checkersDrawingGroup.Children.Add(fieldDraw);
+                if (building != null)
+                {
+                    GeometryDrawing buildingDraw =
+                        new GeometryDrawing(
+                            Building.Brush,
+                            null,
+                            new RectangleGeometry(new System.Windows.Rect(0, 0, x, y)));
+                    checkersDrawingGroup.Children.Add(buildingDraw);
+                }
+
+                brush.Drawing = checkersDrawingGroup;
+                //myBrush.Viewport = new System.Windows.Rect(0, 0, 0.25, 0.25);
+                brush.TileMode = TileMode.None;
+                return brush;
+            }
+        }
+        private System.Windows.Media.Color colorByType()
+        {
+            System.Drawing.Color col;
+            switch (Type)
+            {
+                case FiledType.Grass:
+                    col = System.Drawing.Color.LightGreen;
+                    break;
+                case FiledType.Mountain:
+                    col = System.Drawing.Color.Gray;
+                    break;
+                case FiledType.Sea:
+                    col = System.Drawing.Color.Blue;
+                    break;
+                case FiledType.Forest:
+                    col = System.Drawing.Color.DarkGreen;
+                    break;
+                default:
+                    throw new NotImplementedException("Dany typ pola nie został zaimplementowany w funkji colorByType w klasie Field");
+            }
+            return System.Windows.Media.Color.FromRgb(col.R, col.G, col.B);
         }
         public FiledType Type
         {

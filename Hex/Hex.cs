@@ -27,6 +27,7 @@ namespace WpfHex
         public int i = 10;
         public Brush bru = Brushes.RoyalBlue;
         public Brush stro = Brushes.Black;
+        public Rectangle bg = new Rectangle();
         public Image HexImage = new Image();
         private double size;
         public Field HexField = new Field();
@@ -72,11 +73,8 @@ namespace WpfHex
 
         private void Klik(object sender, MouseButtonEventArgs e)
         {
-            
             bru = Fill = Brushes.Green;
         }
-
-        
 
         protected override Geometry DefiningGeometry
         {

@@ -40,6 +40,7 @@
         <Button x:Name="button2" Content="Button" HorizontalAlignment="Left" Margin="40,424,0,0" VerticalAlignment="Top" Width="75" Click="button2_Click"/>
         <Label x:Name="label3" Content="HexGrid colorer&#xD;&#xA;" HorizontalAlignment="Left" Margin="40,270,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="BuildingComboBox" HorizontalAlignment="Left" Margin="18,449,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0"/>
+        
     </Grid>
 
 </Window>

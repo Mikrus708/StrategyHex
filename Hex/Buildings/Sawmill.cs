@@ -18,12 +18,5 @@ namespace Hex.Buildings
         {
             get { return BuildingType.Sawmill; }
         }
-        public override Image Image
-        {
-            get
-            {
-                return (Image)Resources.ResourceManager.GetObject("Icon_Sawmill");
-            }
-        }
     }
 }

@@ -81,7 +81,7 @@ namespace WpfHex
         {
             Hex h = (sender as Hex);
             h.HexField.Build(Building.FactorBuilding((BuildingType)(BuildingComboBox.SelectedItem)));
-            h.bru = h.Fill = h.HexField.Building.Brush;
+            h.bru = h.Fill = h.HexField.CombinedBrush;
         }
 
         private void dupaClk(object sender, RoutedEventArgs e)

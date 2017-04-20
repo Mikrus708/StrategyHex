@@ -70,7 +70,6 @@ namespace Hex.Buildings
         {
             get { return baseRange; }
         }
-        public abstract Image Image { get; }
     }
     /// <summary>
     /// Typy budynków (ID)
