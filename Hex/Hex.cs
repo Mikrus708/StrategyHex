@@ -30,10 +30,11 @@ namespace WpfHex
         public Rectangle bg = new Rectangle();
         public Image HexImage = new Image();
         private double size;
-        public Field HexField = new Field();
+        private Field hexField;
         public Hex() { }
-        public Hex(Point center, double Size, Brush b, Canvas c = null, MouseButtonEventHandler HexFunc = null)
+        public Hex(Point center, double Size, Brush b, Field field, Canvas c = null, MouseButtonEventHandler HexFunc = null)
         {
+            hexField = field;
             size = Size;
             double sqrt = Size * Math.Sqrt(3) / 2;
             points = new PointCollection(6);
@@ -57,7 +58,17 @@ namespace WpfHex
             Stroke = stro;                      //kolor ramki
             StrokeThickness = 1.2;              //grubośc ramki
         }
-
+        public Field Field
+        {
+            set
+            {
+                hexField = value;
+            }
+            get
+            {
+                return hexField;
+            }
+        }
         private void Default(object sender, MouseEventArgs e)
         {
             //Fill = bru;
@@ -149,7 +160,7 @@ namespace WpfHex
             Hex[,] hexgrid = new Hex[c, r];
             for (int j = 0; j < hexgrid.GetLength(1); ++j)
                 for (int i = 0; i < hexgrid.GetLength(0); ++i)
-                    hexgrid[i, j] = new Hex(new Point(Size + 3 * i * Size + 3 * (j % 2) * Size / 2, Size + j * sqrt2), Size-2, b, Canv);
+                    hexgrid[i, j] = new Hex(new Point(Size + 3 * i * Size + 3 * (j % 2) * Size / 2, Size + j * sqrt2), Size-2, b, new Field(i, j), Canv);
             hexG = hexgrid;
 
         }
@@ -180,12 +191,12 @@ namespace WpfHex
             for (int i = 0; i < n - 1; i++)
                 for (int j = 0; j < hexG[i].Length; j++)
                 {
-                    hexG[i][j] = new Hex(new Point(Center.X - (n - 1 - i) * (Size + 2) * 3 / 2 , Center.Y - (n - 1 + i * 2) * sqrt + 2 * j * sqrt + i % 2 * sqrt + 2 * (i / 2 * sqrt)), Size, b, Canv);
-                    hexG[hexG.Length - 1 - i][j] = new Hex(new Point(Center.X + (n - 1 - i) * (Size + 2) * 3 / 2 , Center.Y - (n - 1 + i * 2) * sqrt + 2 * j * sqrt + i % 2 * sqrt + 2 * (i / 2 * sqrt)), Size, b, Canv);
+                    hexG[i][j] = new Hex(new Point(Center.X - (n - 1 - i) * (Size + 2) * 3 / 2 , Center.Y - (n - 1 + i * 2) * sqrt + 2 * j * sqrt + i % 2 * sqrt + 2 * (i / 2 * sqrt)), Size, b, new Field(i, j), Canv);
+                    hexG[hexG.Length - 1 - i][j] = new Hex(new Point(Center.X + (n - 1 - i) * (Size + 2) * 3 / 2 , Center.Y - (n - 1 + i * 2) * sqrt + 2 * j * sqrt + i % 2 * sqrt + 2 * (i / 2 * sqrt)), Size, b, new Field(hexG.Length - 1 - i, j), Canv);
                 }
             for (int i = 0; i < 2 * n - 1; i++)
             {
-                hexG[n - 1][i] = new Hex(new Point(Center.X, Center.Y + 2 * (-n + i + 1) * sqrt), Size, b, Canv);
+                hexG[n - 1][i] = new Hex(new Point(Center.X, Center.Y + 2 * (-n + i + 1) * sqrt), Size, b, new Field(n - 1, i), Canv);
             }
         }
         public Hex this[int x, int y, int z]

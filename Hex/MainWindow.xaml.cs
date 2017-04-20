@@ -80,11 +80,14 @@ namespace WpfHex
             Canv.Children.RemoveRange(0, Canv.Children.Count );
             int size = 35;
             hhg = new HexagonalHexGrig(6, Brushes.Purple, size, Canv, new Point(400,350));
+            var ran = new Random();
             foreach (var tabh in hhg.hexG)
             {
                 foreach (var he in tabh)
                 {
                     he.MouseDown += build;
+                    he.Field.Type = (FieldType)(ran).Next(0, Enum.GetValues(typeof(FieldType)).Length);
+                    he.bru = he.Fill = he.Field.CombinedBrush;
                 }
             }
         }
@@ -92,13 +95,8 @@ namespace WpfHex
         private void build(object sender, MouseButtonEventArgs e)
         {
             Hex h = (sender as Hex);
-#if DEBUG
-#warning w celach debugowania budowanie ustawia losowy teren
-            h.HexField.Type = (FieldType)(new Random()).Next(0, Enum.GetValues(typeof(FieldType)).Length);
-#endif
-
-            h.HexField.Build(Building.FactorBuilding((BuildingType)(BuildingComboBox.SelectedItem)));
-            h.bru = h.Fill = h.HexField.CombinedBrush;
+            h.Field.Build(Building.FactorBuilding((BuildingType)(BuildingComboBox.SelectedItem)));
+            h.bru = h.Fill = h.Field.CombinedBrush;
         }
 
         private void dupaClk(object sender, RoutedEventArgs e)

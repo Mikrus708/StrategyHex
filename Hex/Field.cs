@@ -16,6 +16,7 @@ namespace Hex
     /// </summary>
     public class Field
     {
+        readonly int x, y;
         const int MAXSIZE = 8;
         Resource[] stack = new Resource[MAXSIZE];
         byte top;
@@ -23,12 +24,36 @@ namespace Hex
         FieldType type;
         public Field()
         {
+            x = y = 0;
             top = 0;
         }
-        public Field(FieldType type)
+        public Field(int _x, int _y, FieldType type = FieldType.Grass)
         {
+            x = _x;
+            y = _y;
             this.type = type;
             top = 0;
+        }
+        public int X
+        {
+            get
+            {
+                return x;
+            }
+        }
+        public int Y
+        {
+            get
+            {
+                return y;
+            }
+        }
+        public int Z
+        {
+            get
+            {
+                return -x - y;
+            }
         }
         public System.Windows.Media.Brush FieldBrush
         {
@@ -63,9 +88,7 @@ namespace Hex
                             new RectangleGeometry(new System.Windows.Rect(0, 0, x, y)));
                     checkersDrawingGroup.Children.Add(buildingDraw);
                 }
-
                 brush.Drawing = checkersDrawingGroup;
-                //myBrush.Viewport = new System.Windows.Rect(0, 0, 0.25, 0.25);
                 brush.TileMode = TileMode.None;
                 return brush;
             }
