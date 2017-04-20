@@ -53,7 +53,7 @@ namespace Hex.Buildings
             {
                 return new ImageBrush
                 {
-                    ImageSource = new BitmapImage(new Uri($@"pack://application:,,,/Resources/HexImage/{Type}.png"))
+                    ImageSource = new BitmapImage(new Uri($@"pack://application:,,,/Resources/BuildingImage/{Type}.png"))
                 };
             }
         }

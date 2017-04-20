@@ -83,18 +83,25 @@ namespace WpfHex
             var ran = new Random();
             foreach (var he in hhg.Hexes)
             {
-                he.MouseDown += build;
+                he.MouseDown += reactionToHexClick;
                 he.Field.Type = (FieldType)(ran).Next(0, Enum.GetValues(typeof(FieldType)).Length);
                 he.Field.AddResource(new Resource((ResourceType)(ran).Next(0, Enum.GetValues(typeof(ResourceType)).Length), (uint)ran.Next(100, 1000)));
                 he.bru = he.Fill = he.Field.CombinedBrush;
             }
         }
 
-        private void build(object sender, MouseButtonEventArgs e)
+        private void reactionToHexClick(object sender, MouseButtonEventArgs e)
         {
             Hex h = (sender as Hex);
-            h.Field.Build(Building.FactorBuilding((BuildingType)(BuildingComboBox.SelectedItem)));
-            h.bru = h.Fill = h.Field.CombinedBrush;
+            if ((bool)checkBox.IsChecked)
+            {
+                h.Field.DestroyBuilding();
+            }
+            else
+            {
+                h.Field.Build(Building.FactorBuilding((BuildingType)(BuildingComboBox.SelectedItem)));
+            }
+            //h.bru = h.Fill = h.Field.CombinedBrush;
         }
 
         private void dupaClk(object sender, RoutedEventArgs e)
@@ -145,6 +152,16 @@ namespace WpfHex
             }
             else
                 MessageBox.Show("Indeks musi być liczbą");
+        }
+
+        private void checkBox_Checked(object sender, RoutedEventArgs e)
+        {
+            BuildingComboBox.IsEnabled = false;
+        }
+
+        private void checkBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            BuildingComboBox.IsEnabled = true;
         }
     }
 }

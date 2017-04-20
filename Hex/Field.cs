@@ -19,6 +19,8 @@ namespace Hex
         readonly int x, y;
         const int MAXSIZE = 8;
         Resource[] stack = new Resource[MAXSIZE];
+        ImageBrush fieldBrush = new ImageBrush();
+        DrawingBrush combinedBrush = new DrawingBrush();
         byte top;
         Building building = null;
         FieldType type;
@@ -26,6 +28,7 @@ namespace Hex
         {
             x = y = 0;
             top = 8;
+            updateBrushes();
         }
         public Field(int _x, int _y, FieldType type = FieldType.Grass)
         {
@@ -33,6 +36,39 @@ namespace Hex
             y = _y;
             this.type = type;
             top = 8;
+            updateBrushes();
+        }
+        private void updateBrushes()
+        {
+            updateFieldBrush();
+            updateCombinedBrush();
+        }
+        private void updateCombinedBrush()
+        {
+            DrawingGroup checkersDrawingGroup = new DrawingGroup();
+            int x = 100;
+            int y = 100;
+            GeometryDrawing fieldDraw =
+                new GeometryDrawing(
+                    fieldBrush,
+                    null,
+                    new RectangleGeometry(new System.Windows.Rect(0, 0, x, y)));
+            checkersDrawingGroup.Children.Add(fieldDraw);
+            if (building != null)
+            {
+                GeometryDrawing buildingDraw =
+                    new GeometryDrawing(
+                        Building.Brush,
+                        null,
+                        new RectangleGeometry(new System.Windows.Rect(0, 0, x, y)));
+                checkersDrawingGroup.Children.Add(buildingDraw);
+            }
+            combinedBrush.Drawing = checkersDrawingGroup;
+            combinedBrush.TileMode = TileMode.None;
+        }
+        private void updateFieldBrush()
+        {
+            fieldBrush.ImageSource = new BitmapImage(new Uri($@"pack://application:,,,/Resources/HexFields/{Type}.png"));
         }
         public int X
         {
@@ -59,38 +95,14 @@ namespace Hex
         {
             get
             {
-                return new ImageBrush
-                {
-                    ImageSource = new BitmapImage(new Uri($@"pack://application:,,,/Resources/HexFields/{Type}.png"))
-                };
+                return fieldBrush;
             }
         }
         public System.Windows.Media.Brush CombinedBrush
         {
             get
             {
-                DrawingBrush brush = new DrawingBrush();
-                DrawingGroup checkersDrawingGroup = new DrawingGroup();
-                int x = 100;
-                int y = 100;
-                GeometryDrawing fieldDraw =
-                    new GeometryDrawing(
-                        FieldBrush,
-                        null,
-                        new RectangleGeometry(new System.Windows.Rect(0, 0, x, y)));
-                checkersDrawingGroup.Children.Add(fieldDraw);
-                if (building != null)
-                {
-                    GeometryDrawing buildingDraw =
-                        new GeometryDrawing(
-                            Building.Brush,
-                            null,
-                            new RectangleGeometry(new System.Windows.Rect(0, 0, x, y)));
-                    checkersDrawingGroup.Children.Add(buildingDraw);
-                }
-                brush.Drawing = checkersDrawingGroup;
-                brush.TileMode = TileMode.None;
-                return brush;
+                return combinedBrush;
             }
         }
         private System.Windows.Media.Color colorByType()
@@ -118,7 +130,7 @@ namespace Hex
         public FieldType Type
         {
             get { return type; }
-            set { type = value; }
+            set { type = value; updateBrushes(); }
         }
         /// <summary>
         /// Dodaje do stosu zasobów nowy zasób, o ile jest na niego jeszcze miejsce.
@@ -134,6 +146,7 @@ namespace Hex
                 if (lay < top && stack[lay].Ammount != 0)
                 {
                     top = (byte)lay;
+                    updateBrushes();
                 }
                 return true;
             }
@@ -147,7 +160,14 @@ namespace Hex
         {
             get
             {
-                while (stack[top].Ammount == 0 && top < 8) ++top;
+                bool change = false;
+                while (stack[top].Ammount == 0 && top < 8)
+                {
+                    change = true;
+                    ++top;
+                }
+                if (change)
+                    updateBrushes();
                 return top == 8 ? null : (Resource?)stack[top];
             }
         }
@@ -216,6 +236,7 @@ namespace Hex
                 return false;
             }
             this.building = building;
+            updateCombinedBrush();
             return true;
         }
         /// <summary>
@@ -224,6 +245,15 @@ namespace Hex
         public void DestroyBuilding()
         {
             building = null;
+            updateCombinedBrush();
+        }
+        /// <summary>
+        /// Odswieża Brush
+        /// </summary>
+        public void Refresh()
+        {
+            while (stack[top].Ammount == 0 && top < 8) ++top;
+            updateBrushes();
         }
     }
     /// <summary>

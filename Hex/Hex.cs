@@ -84,7 +84,7 @@ namespace WpfHex
 
         private void Klik(object sender, MouseButtonEventArgs e)
         {
-            bru = Fill = Brushes.Green;
+            //bru = Fill = Brushes.Green;
         }
 
         protected override Geometry DefiningGeometry

@@ -116,18 +116,18 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\HexImage\CoalMine.png" />
-    <Resource Include="Resources\HexImage\Farm.png" />
-    <Resource Include="Resources\HexImage\FishermanHut.png" />
-    <Resource Include="Resources\HexImage\GoldMine.png" />
-    <Resource Include="Resources\HexImage\Hut.png" />
-    <Resource Include="Resources\HexImage\IronMine.png" />
-    <Resource Include="Resources\HexImage\LumberjackHut.png" />
-    <Resource Include="Resources\HexImage\Sawmill.png" />
-    <Resource Include="Resources\HexImage\SmallTower.png" />
-    <Resource Include="Resources\HexImage\SteelWorks.png" />
-    <Resource Include="Resources\HexImage\StoneMine.png" />
-    <Resource Include="Resources\HexImage\TownHall.png" />
+    <Resource Include="Resources\BuildingImage\CoalMine.png" />
+    <Resource Include="Resources\BuildingImage\Farm.png" />
+    <Resource Include="Resources\BuildingImage\FishermanHut.png" />
+    <Resource Include="Resources\BuildingImage\GoldMine.png" />
+    <Resource Include="Resources\BuildingImage\Hut.png" />
+    <Resource Include="Resources\BuildingImage\IronMine.png" />
+    <Resource Include="Resources\BuildingImage\LumberjackHut.png" />
+    <Resource Include="Resources\BuildingImage\Sawmill.png" />
+    <Resource Include="Resources\BuildingImage\SmallTower.png" />
+    <Resource Include="Resources\BuildingImage\SteelWorks.png" />
+    <Resource Include="Resources\BuildingImage\StoneMine.png" />
+    <Resource Include="Resources\BuildingImage\TownHall.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\HexFields\forest.png" />

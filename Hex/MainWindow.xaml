@@ -41,8 +41,9 @@
         </ComboBox>
         <Button x:Name="button2" Content="Button" HorizontalAlignment="Left" Margin="40,424,0,0" VerticalAlignment="Top" Width="75" Click="button2_Click"/>
         <Label x:Name="label3" Content="HexGrid colorer&#xD;&#xA;" HorizontalAlignment="Left" Margin="40,270,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="BuildingComboBox" HorizontalAlignment="Left" Margin="18,449,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0"/>
+        <ComboBox x:Name="BuildingComboBox" HorizontalAlignment="Left" Margin="18,466,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0"/>
         <Slider x:Name="slider1" HorizontalAlignment="Left" Margin="18,493,0,0" VerticalAlignment="Top" Width="148" RenderTransformOrigin="0.331,0.5" Value="1" Maximum="4" Minimum="0.25"/>
+        <CheckBox x:Name="checkBox" Content="Usuń" HorizontalAlignment="Left" Margin="44,446,0,0" VerticalAlignment="Top" Checked="checkBox_Checked" Unchecked="checkBox_Unchecked"/>
 
     </Grid>
 
