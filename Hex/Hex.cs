@@ -27,12 +27,10 @@ namespace WpfHex
         public int i = 10;
         public Brush bru = Brushes.RoyalBlue;
         public Brush stro = Brushes.Black;
-        public Rectangle bg = new Rectangle();
-        public Image HexImage = new Image();
         private double size;
         private Field hexField;
         public Hex() { }
-        public Hex(Point center, double Size, Brush b, Field field, Canvas c = null, MouseButtonEventHandler HexFunc = null)
+        public Hex(Point center, double Size, Brush b, Field field = null, Canvas c = null, MouseButtonEventHandler HexFunc = null)
         {
             hexField = field;
             size = Size;

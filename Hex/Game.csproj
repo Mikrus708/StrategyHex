@@ -135,6 +135,18 @@
     <Resource Include="Resources\HexFields\mountain.png" />
     <Resource Include="Resources\HexFields\sea.png" />
   </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\MaterialImage\coal.png" />
+    <Resource Include="Resources\MaterialImage\food.png" />
+    <Resource Include="Resources\MaterialImage\gold.png" />
+    <Resource Include="Resources\MaterialImage\goldore.png" />
+    <Resource Include="Resources\MaterialImage\ironbar.png" />
+    <Resource Include="Resources\MaterialImage\ironore.png" />
+    <Resource Include="Resources\MaterialImage\population.png" />
+    <Resource Include="Resources\MaterialImage\stone.png" />
+    <Resource Include="Resources\MaterialImage\wood.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

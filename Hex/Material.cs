@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace Hex
 {
@@ -93,6 +95,30 @@ namespace Hex
                     return MaterialType.Coal;
                 default:
                     throw new NotImplementedException($"ResourceType.{type.ToString()} niezaimplementowany w Material.GetType()");
+            }
+        }
+        public Brush Brush
+        {
+            get
+            {
+                return new ImageBrush
+                {
+                    ImageSource = new BitmapImage(new Uri($@"pack://application:,,,/Resources/MaterialImage/{Type}.png"))
+                };
+            }
+        }
+        public System.Drawing.Bitmap Bitmap
+        {
+            get
+            {
+                return new System.Drawing.Bitmap($@"pack://application:,,,/Resources/MaterialImage/{Type}.png");
+            }
+        }
+        public Uri ImageUri
+        {
+            get
+            {
+                return new Uri($@"pack://application:,,,/Resources/MaterialImage/{Type}.png");
             }
         }
         public MaterialType Type

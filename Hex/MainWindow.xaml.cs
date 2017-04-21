@@ -30,6 +30,7 @@ namespace WpfHex
         {
             InitializeComponent();
             initComboBuild();
+            initMaterialList();
             this.KeyDown += Arrows;
             this.MouseWheel += Zoom;
             
@@ -162,6 +163,14 @@ namespace WpfHex
         private void checkBox_Unchecked(object sender, RoutedEventArgs e)
         {
             BuildingComboBox.IsEnabled = true;
+        }
+
+        private void initMaterialList()
+        {
+            foreach (MaterialType type in Enum.GetValues(typeof(MaterialType)))
+            {
+                materialList.Items.Add(new Material(type, 1000));
+            }
         }
     }
 }
