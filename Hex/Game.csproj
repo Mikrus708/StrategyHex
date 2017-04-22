@@ -64,6 +64,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Costs\BuildingsCosts.cs" />
     <Compile Include="Buildings\Building.cs" />
     <Compile Include="Buildings\CoalMine.cs" />
     <Compile Include="Buildings\Farm.cs" />

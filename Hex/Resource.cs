@@ -94,7 +94,7 @@ namespace Hex
                 case ResourceType.Gold:
                     return 3;
                 default:
-                    throw new NotImplementedException($"Brakuje implenetacji dla typu {type} w GetLayer()");
+                    throw new NotImplementedException($"Brakuje implenetacji dla ResourceType.{type} w Resource.GetLayer()");
             }
         }
         /// <summary>

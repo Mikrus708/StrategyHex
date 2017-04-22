@@ -15,7 +15,7 @@ namespace Hex.Buildings
     public abstract class Building
     {
         protected uint baseRange;
-        public static Building FactorBuilding(BuildingType typ)
+        public static Building FactoryBuilding(BuildingType typ)
         {
             switch (typ)
             {
@@ -44,7 +44,7 @@ namespace Hex.Buildings
                 case BuildingType.LumberjackHut:
                     return new LumberjackHut();
                 default:
-                    throw new NotImplementedException("Nie zaimplementowano w FactorBuilding danego typu chuju.");
+                    throw new NotImplementedException($"Nie zaimplementowano BuildingType.{typ} w Building.FactorBuilding()");
             }
         }
         public virtual System.Windows.Media.Brush Brush
@@ -59,11 +59,11 @@ namespace Hex.Buildings
         }
         public virtual Cost BuildCost
         {
-            get { return null; }
+            get { return Costs.BuildingsCosts.GetBuildCost(Type); }
         }
         public virtual Cost UpkeepCost
         {
-            get { return null; }
+            get { return Costs.BuildingsCosts.GetUpkeepCost(Type); }
         }
         public abstract BuildingType Type { get; }
         public virtual uint Range

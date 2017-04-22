@@ -1,5 +1,6 @@
 ﻿using Hex;
 using Hex.Buildings;
+using Hex.Costs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,8 @@ namespace WpfHex
 
         public MainWindow()
         {
+            //BuildingsCosts.SaveCosts("../../BuildingCosts.xml");
+            BuildingsCosts.LoadCosts("../../BuildingCosts.xml");
             InitializeComponent();
             initComboBuild();
             initMaterialList();
@@ -100,7 +103,7 @@ namespace WpfHex
             }
             else
             {
-                h.Field.Build(Building.FactorBuilding((BuildingType)(BuildingComboBox.SelectedItem)));
+                h.Field.Build(Building.FactoryBuilding((BuildingType)(BuildingComboBox.SelectedItem)));
             }
             //h.bru = h.Fill = h.Field.CombinedBrush;
         }

@@ -110,6 +110,8 @@ namespace WpfHex
                 return g;
             }
         }
+
+        public static object Costs { get; internal set; }
     }
     public class BoardDontUse : Canvas
     {

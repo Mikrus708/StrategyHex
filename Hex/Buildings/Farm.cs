@@ -10,10 +10,6 @@ namespace Hex.Buildings
 {
     public class Farm : Building
     {
-        public override Cost BuildCost
-        {
-            get { return new Cost(); }
-        }
         public override BuildingType Type
         {
             get { return BuildingType.Farm; }

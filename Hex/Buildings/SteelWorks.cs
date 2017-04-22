@@ -10,17 +10,9 @@ namespace Hex.Buildings
 {
     public class SteelWorks : Building
     {
-        public override Cost BuildCost
-        {
-            get { return new Cost(); }
-        }
         public override BuildingType Type
         {
             get { return BuildingType.SteelWorks; }
-        }
-        public override Cost UpkeepCost
-        {
-            get { return new Cost(); }
         }
     }
 }

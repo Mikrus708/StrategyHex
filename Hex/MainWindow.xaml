@@ -49,7 +49,7 @@
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <Image Width="24" Height="24" Source="{Binding ImageUri}"/>
+                                    <Image Width="32" Height="24" Source="{Binding ImageUri}"/>
                                     <!--<TextBlock Text="{Binding ThePatientName}"/>-->
                                 </StackPanel>
                             </DataTemplate>

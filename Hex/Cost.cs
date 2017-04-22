@@ -9,8 +9,7 @@ namespace Hex
 {
     public class Cost : IEnumerable<Material>
     {
-        uint[] values;
-        MaterialType[] types;
+        uint[] values = new uint[Enum.GetValues(typeof(MaterialType)).Length];
         public Cost (MaterialType[] types, uint[] values)
         {
             if (types == null || values == null)
@@ -21,24 +20,27 @@ namespace Hex
             {
                 throw new ArgumentException("Tablica maja inny rozmiar");
             }
-            this.values = values;
-            this.types = types;
+            for (int i = 0; i < types.Length; ++i)
+            {
+                this.values[(int)types[i]] += values[i];
+            }
         }
         public Cost (params Material[] materials)
         {
-            values = materials.Select((x) => x.Ammount).ToArray();
-            types = materials.Select((x) => x.Type).ToArray();
+            foreach (Material m in materials)
+            {
+                values[(int)m.Type] += m.Ammount;
+            }
         }
-        public Cost()
-        {
-            values = new uint[0];
-            types = new MaterialType[0];
-        }
+        public Cost() { }
         public IEnumerator<Material> GetEnumerator()
         {
-            for (int i = 0; i < types.Length; ++i)
+            for (int i = 0; i < values.Length; ++i)
             {
-                yield return new Material(types[i], values[i]);
+                if (values[i] > 0)
+                {
+                    yield return new Material((MaterialType)i, values[i]);
+                }
             }
             yield break;
         }
@@ -60,28 +62,11 @@ namespace Hex
         {
             get
             {
-                int index = Array.BinarySearch(types, key);
-                if (index < 0)
-                {
-                    return 0;
-                }
-                return values[index];
+                return values[(int)key];
             }
             set
             {
-                int index = Array.BinarySearch(types, key);
-                if (index < 0)
-                {
-                    var nValues = new uint[values.Length];
-                    Array.Copy(values, nValues, values.Length);
-                    var nTypes = new MaterialType[types.Length];
-                    Array.Copy(types, nTypes, types.Length);
-                    values = nValues;
-                    types = nTypes;
-                    index = types.Length - 1;
-                    types[index] = key;
-                }
-                values[index] = value;
+                values[(int)key] = value;
             }
         }
     }
