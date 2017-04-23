@@ -199,6 +199,77 @@ namespace WpfHex
                 hexG[n - 1][i] = new Hex(new Point(Center.X, Center.Y + 2 * (-n + i + 1) * sqrt), Size, b, new Field(n - 1, i), Canv);
             }
         }
+        public IEnumerable<Hex> Surrounding(int n,  int x, int y, int z=0)
+        {
+            if (z == 0) z = -x - y;
+            //yield return this[x, y, z];
+            int chx = 0;
+            int chy = -n;
+            int chz = n;
+            int forx = 1;
+            int fory = 0;
+            int forz = -1;
+            for (int j = 0; j < n; j++)
+            {
+                yield return this[x + chx, y + chy, z + chz];
+                chx += forx;
+                chy += fory;
+                chz += forz;
+            }
+            forx = 0;
+            fory = 1;
+            forz = -1;
+            for (int j = 0; j < n; j++)
+            {
+                yield return this[x + chx, y + chy, z + chz];
+                x += forx;
+                y += fory;
+                z += forz;
+            }
+            forx = -1;
+            fory = 1;
+            forz = 0;
+            for (int j = 0; j < n; j++)
+            {
+                yield return this[x + chx, y + chy, z + chz];
+                x += forx;
+                y += fory;
+                z += forz;
+            }
+            forx = -1;
+            fory = 0;
+            forz = 1;
+            for (int j = 0; j < n; j++)
+            {
+                yield return this[x + chx, y + chy, z + chz];
+                x += forx;
+                y += fory;
+                z += forz;
+            }
+            forx = 0;
+            fory = -1;
+            forz = 1;
+            for (int j = 0; j < n; j++)
+            {
+                yield return this[x + chx, y + chy, z + chz];
+                x += forx;
+                y += fory;
+                z += forz;
+            }
+            forx = 1;
+            fory = -1;
+            forz = 0;
+            for (int j = 0; j < n; j++)
+            {
+                yield return this[x + chx, y + chy, z + chz];
+                x += forx;
+                y += fory;
+                z += forz;
+            }
+            //function cube_ring(center, radius):
+
+        }
+            
         public IEnumerable<Hex> Hexes
         {
             get
