@@ -1,6 +1,6 @@
 ﻿using Hex;
 using Hex.Buildings;
-using Hex.Costs;
+using Hex.GameSettings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,8 +29,8 @@ namespace WpfHex
 
         public MainWindow()
         {
-            //BuildingsCosts.SaveCosts("../../BuildingCosts.xml");
             BuildingsCosts.LoadCosts("../../BuildingCosts.xml");
+            BuildingsCosts.SaveCosts("../../BuildingCosts.xml");
             InitializeComponent();
             initComboBuild();
             initMaterialList();

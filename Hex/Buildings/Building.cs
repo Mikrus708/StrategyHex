@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Xml;
 
 namespace Hex.Buildings
 {
@@ -15,6 +16,16 @@ namespace Hex.Buildings
     public abstract class Building
     {
         protected uint baseRange;
+        private static string xmlTypeString = "Type";
+        public static Building FactoryBuilding(XmlElement elem)
+        {
+            BuildingType typ;
+            if (Enum.TryParse(elem.GetAttribute(xmlTypeString), out typ))
+            {
+                return FactoryBuilding(typ);
+            }
+            return null;
+        }
         public static Building FactoryBuilding(BuildingType typ)
         {
             switch (typ)
@@ -59,16 +70,22 @@ namespace Hex.Buildings
         }
         public virtual Cost BuildCost
         {
-            get { return Costs.BuildingsCosts.GetBuildCost(Type); }
+            get { return GameSettings.BuildingsCosts.GetBuildCost(Type); }
         }
         public virtual Cost UpkeepCost
         {
-            get { return Costs.BuildingsCosts.GetUpkeepCost(Type); }
+            get { return GameSettings.BuildingsCosts.GetUpkeepCost(Type); }
         }
         public abstract BuildingType Type { get; }
         public virtual uint Range
         {
             get { return baseRange; }
+        }
+        public virtual XmlElement GetXmlElement(XmlDocument doc, string name)
+        {
+            XmlElement result = doc.CreateElement(name);
+            result.SetAttribute(xmlTypeString, Type.ToString());
+            return result;
         }
     }
     /// <summary>

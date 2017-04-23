@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Xml;
 
 namespace Hex
 {
@@ -13,6 +14,7 @@ namespace Hex
     /// </summary>
     public struct Material
     {
+        const string xmlTypeString = "Type";
         readonly MaterialType type;
         uint ammount;
         /// <summary>
@@ -44,6 +46,24 @@ namespace Hex
         {
             type = material.type;
             ammount = material.ammount;
+        }
+        public Material (XmlElement elem, out bool done)
+        {
+            type = MaterialType.Coal;
+            ammount = 0;
+            done = false;
+            string tStr = elem.GetAttribute(xmlTypeString);
+            MaterialType typ;
+            if (Enum.TryParse(tStr, out typ))
+            {
+                uint amm;
+                if (uint.TryParse(elem.InnerText, out amm))
+                {
+                    type = typ;
+                    ammount = amm;
+                    done = true;
+                }
+            }
         }
         public static Material operator +(Material material, uint ammount)
         {
@@ -129,6 +149,13 @@ namespace Hex
         {
             get { return ammount; }
             set { ammount = value; }
+        }
+        public XmlElement GetXmlElement(XmlDocument doc)
+        {
+            XmlElement result = doc.CreateElement("Material");
+            result.SetAttribute(xmlTypeString, Type.ToString());
+            result.InnerText = ammount.ToString();
+            return result;
         }
     }
     /// <summary>

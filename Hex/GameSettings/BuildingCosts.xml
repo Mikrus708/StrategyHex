@@ -1,0 +1,136 @@
+<BuildingCosts>
+  <Hut>
+    <Build>
+      <Food Ammount="50" />
+      <Wood Ammount="200" />
+      <Stone Ammount="100" />
+      <Gold Ammount="200" />
+      <Coal Ammount="150" />
+      <GoldOre Ammount="150" />
+    </Build>
+    <Upkeep>
+      <IronBar Ammount="150" />
+    </Upkeep>
+  </Hut>
+  <TownHall>
+    <Build>
+      <Wood Ammount="200" />
+      <Stone Ammount="50" />
+      <Gold Ammount="50" />
+      <Coal Ammount="250" />
+      <IronBar Ammount="50" />
+    </Build>
+    <Upkeep>
+      <Stone Ammount="150" />
+    </Upkeep>
+  </TownHall>
+  <SmallTower>
+    <Build>
+      <Food Ammount="100" />
+      <Wood Ammount="150" />
+      <Gold Ammount="150" />
+      <Population Ammount="100" />
+      <IronOre Ammount="50" />
+      <GoldOre Ammount="100" />
+    </Build>
+    <Upkeep>
+      <IronOre Ammount="50" />
+    </Upkeep>
+  </SmallTower>
+  <Sawmill>
+    <Build>
+      <Wood Ammount="100" />
+      <Coal Ammount="200" />
+      <IronBar Ammount="250" />
+    </Build>
+    <Upkeep>
+      <Population Ammount="50" />
+    </Upkeep>
+  </Sawmill>
+  <StoneMine>
+    <Build>
+      <Food Ammount="100" />
+      <Stone Ammount="100" />
+      <Population Ammount="100" />
+      <IronOre Ammount="100" />
+      <Coal Ammount="100" />
+      <GoldOre Ammount="100" />
+    </Build>
+    <Upkeep />
+  </StoneMine>
+  <Farm>
+    <Build>
+      <Food Ammount="50" />
+      <Stone Ammount="150" />
+      <Population Ammount="250" />
+      <IronBar Ammount="50" />
+    </Build>
+    <Upkeep>
+      <IronBar Ammount="150" />
+    </Upkeep>
+  </Farm>
+  <IronMine>
+    <Build>
+      <Food Ammount="350" />
+      <Stone Ammount="300" />
+      <Population Ammount="150" />
+      <IronOre Ammount="50" />
+    </Build>
+    <Upkeep />
+  </IronMine>
+  <CoalMine>
+    <Build>
+      <Food Ammount="300" />
+      <Wood Ammount="100" />
+      <Stone Ammount="50" />
+      <Population Ammount="50" />
+      <IronBar Ammount="150" />
+      <GoldOre Ammount="150" />
+    </Build>
+    <Upkeep />
+  </CoalMine>
+  <SteelWorks>
+    <Build>
+      <Food Ammount="150" />
+      <Wood Ammount="150" />
+      <Gold Ammount="300" />
+      <Coal Ammount="100" />
+    </Build>
+    <Upkeep>
+      <GoldOre Ammount="150" />
+    </Upkeep>
+  </SteelWorks>
+  <FishermanHut>
+    <Build>
+      <Food Ammount="150" />
+      <Wood Ammount="250" />
+      <Stone Ammount="100" />
+      <IronBar Ammount="100" />
+      <GoldOre Ammount="150" />
+    </Build>
+    <Upkeep>
+      <GoldOre Ammount="150" />
+    </Upkeep>
+  </FishermanHut>
+  <GoldMine>
+    <Build>
+      <Food Ammount="50" />
+      <Wood Ammount="150" />
+      <Population Ammount="50" />
+      <IronOre Ammount="50" />
+      <GoldOre Ammount="150" />
+    </Build>
+    <Upkeep />
+  </GoldMine>
+  <LumberjackHut>
+    <Build>
+      <Food Ammount="50" />
+      <Wood Ammount="100" />
+      <Population Ammount="100" />
+      <Coal Ammount="100" />
+      <IronBar Ammount="50" />
+      <GoldOre Ammount="50" />
+    </Build>
+    <Upkeep />
+  </LumberjackHut>
+</BuildingCosts>

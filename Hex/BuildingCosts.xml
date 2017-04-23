@@ -1,136 +1,136 @@
 <BuildingCosts>
   <Hut>
-    <Build>
-      <Food Ammount="50" />
-      <Wood Ammount="200" />
-      <Stone Ammount="100" />
-      <Gold Ammount="200" />
-      <Coal Ammount="150" />
-      <GoldOre Ammount="150" />
-    </Build>
-    <Upkeep>
-      <IronBar Ammount="150" />
-    </Upkeep>
+    <Cost Type="Build">
+      <Material Type="Wood">200</Material>
+      <Material Type="Population">150</Material>
+      <Material Type="Coal">100</Material>
+      <Material Type="IronBar">100</Material>
+      <Material Type="GoldOre">100</Material>
+    </Cost>
+    <Cost Type="Upkeep" />
   </Hut>
   <TownHall>
-    <Build>
-      <Wood Ammount="200" />
-      <Stone Ammount="50" />
-      <Gold Ammount="50" />
-      <Coal Ammount="250" />
-      <IronBar Ammount="50" />
-    </Build>
-    <Upkeep>
-      <Stone Ammount="150" />
-    </Upkeep>
+    <Cost Type="Build">
+      <Material Type="Food">50</Material>
+      <Material Type="Stone">50</Material>
+      <Material Type="Population">200</Material>
+      <Material Type="IronOre">100</Material>
+      <Material Type="Coal">150</Material>
+      <Material Type="GoldOre">100</Material>
+    </Cost>
+    <Cost Type="Upkeep" />
   </TownHall>
   <SmallTower>
-    <Build>
-      <Food Ammount="100" />
-      <Wood Ammount="150" />
-      <Gold Ammount="150" />
-      <Population Ammount="100" />
-      <IronOre Ammount="50" />
-      <GoldOre Ammount="100" />
-    </Build>
-    <Upkeep>
-      <IronOre Ammount="50" />
-    </Upkeep>
+    <Cost Type="Build">
+      <Material Type="Wood">100</Material>
+      <Material Type="Gold">50</Material>
+      <Material Type="Coal">150</Material>
+      <Material Type="IronBar">200</Material>
+      <Material Type="GoldOre">300</Material>
+    </Cost>
+    <Cost Type="Upkeep" />
   </SmallTower>
   <Sawmill>
-    <Build>
-      <Wood Ammount="100" />
-      <Coal Ammount="200" />
-      <IronBar Ammount="250" />
-    </Build>
-    <Upkeep>
-      <Population Ammount="50" />
-    </Upkeep>
+    <Cost Type="Build">
+      <Material Type="Wood">100</Material>
+      <Material Type="Gold">150</Material>
+      <Material Type="IronOre">100</Material>
+      <Material Type="Coal">50</Material>
+      <Material Type="IronBar">50</Material>
+      <Material Type="GoldOre">150</Material>
+    </Cost>
+    <Cost Type="Upkeep">
+      <Material Type="Food">100</Material>
+    </Cost>
   </Sawmill>
   <StoneMine>
-    <Build>
-      <Food Ammount="100" />
-      <Stone Ammount="100" />
-      <Population Ammount="100" />
-      <IronOre Ammount="100" />
-      <Coal Ammount="100" />
-      <GoldOre Ammount="100" />
-    </Build>
-    <Upkeep />
+    <Cost Type="Build">
+      <Material Type="Food">100</Material>
+      <Material Type="Gold">50</Material>
+      <Material Type="IronOre">50</Material>
+      <Material Type="Coal">150</Material>
+      <Material Type="IronBar">150</Material>
+    </Cost>
+    <Cost Type="Upkeep">
+      <Material Type="Coal">50</Material>
+    </Cost>
   </StoneMine>
   <Farm>
-    <Build>
-      <Food Ammount="50" />
-      <Stone Ammount="150" />
-      <Population Ammount="250" />
-      <IronBar Ammount="50" />
-    </Build>
-    <Upkeep>
-      <IronBar Ammount="150" />
-    </Upkeep>
+    <Cost Type="Build">
+      <Material Type="Food">50</Material>
+      <Material Type="Wood">50</Material>
+      <Material Type="Stone">100</Material>
+      <Material Type="IronOre">200</Material>
+      <Material Type="Coal">150</Material>
+      <Material Type="IronBar">100</Material>
+    </Cost>
+    <Cost Type="Upkeep">
+      <Material Type="GoldOre">150</Material>
+    </Cost>
   </Farm>
   <IronMine>
-    <Build>
-      <Food Ammount="350" />
-      <Stone Ammount="300" />
-      <Population Ammount="150" />
-      <IronOre Ammount="50" />
-    </Build>
-    <Upkeep />
+    <Cost Type="Build">
+      <Material Type="Wood">100</Material>
+      <Material Type="Gold">150</Material>
+      <Material Type="Coal">150</Material>
+      <Material Type="GoldOre">150</Material>
+    </Cost>
+    <Cost Type="Upkeep" />
   </IronMine>
   <CoalMine>
-    <Build>
-      <Food Ammount="300" />
-      <Wood Ammount="100" />
-      <Stone Ammount="50" />
-      <Population Ammount="50" />
-      <IronBar Ammount="150" />
-      <GoldOre Ammount="150" />
-    </Build>
-    <Upkeep />
+    <Cost Type="Build">
+      <Material Type="Food">250</Material>
+      <Material Type="Gold">50</Material>
+      <Material Type="IronOre">250</Material>
+    </Cost>
+    <Cost Type="Upkeep" />
   </CoalMine>
   <SteelWorks>
-    <Build>
-      <Food Ammount="150" />
-      <Wood Ammount="150" />
-      <Gold Ammount="300" />
-      <Coal Ammount="100" />
-    </Build>
-    <Upkeep>
-      <GoldOre Ammount="150" />
-    </Upkeep>
+    <Cost Type="Build">
+      <Material Type="Food">50</Material>
+      <Material Type="Wood">100</Material>
+      <Material Type="Stone">150</Material>
+      <Material Type="IronOre">50</Material>
+      <Material Type="Coal">100</Material>
+      <Material Type="IronBar">100</Material>
+      <Material Type="GoldOre">100</Material>
+    </Cost>
+    <Cost Type="Upkeep">
+      <Material Type="IronBar">150</Material>
+    </Cost>
   </SteelWorks>
   <FishermanHut>
-    <Build>
-      <Food Ammount="150" />
-      <Wood Ammount="250" />
-      <Stone Ammount="100" />
-      <IronBar Ammount="100" />
-      <GoldOre Ammount="150" />
-    </Build>
-    <Upkeep>
-      <GoldOre Ammount="150" />
-    </Upkeep>
+    <Cost Type="Build">
+      <Material Type="Food">150</Material>
+      <Material Type="Stone">150</Material>
+      <Material Type="Gold">200</Material>
+      <Material Type="Population">50</Material>
+      <Material Type="IronOre">150</Material>
+      <Material Type="IronBar">150</Material>
+    </Cost>
+    <Cost Type="Upkeep" />
   </FishermanHut>
   <GoldMine>
-    <Build>
-      <Food Ammount="50" />
-      <Wood Ammount="150" />
-      <Population Ammount="50" />
-      <IronOre Ammount="50" />
-      <GoldOre Ammount="150" />
-    </Build>
-    <Upkeep />
+    <Cost Type="Build">
+      <Material Type="Wood">250</Material>
+      <Material Type="Gold">100</Material>
+      <Material Type="Population">200</Material>
+      <Material Type="IronBar">100</Material>
+      <Material Type="GoldOre">50</Material>
+    </Cost>
+    <Cost Type="Upkeep">
+      <Material Type="Population">50</Material>
+    </Cost>
   </GoldMine>
   <LumberjackHut>
-    <Build>
-      <Food Ammount="50" />
-      <Wood Ammount="100" />
-      <Population Ammount="100" />
-      <Coal Ammount="100" />
-      <IronBar Ammount="50" />
-      <GoldOre Ammount="50" />
-    </Build>
-    <Upkeep />
+    <Cost Type="Build">
+      <Material Type="Wood">50</Material>
+      <Material Type="Stone">150</Material>
+      <Material Type="Gold">150</Material>
+      <Material Type="Population">250</Material>
+    </Cost>
+    <Cost Type="Upkeep">
+      <Material Type="Stone">100</Material>
+    </Cost>
   </LumberjackHut>
 </BuildingCosts>

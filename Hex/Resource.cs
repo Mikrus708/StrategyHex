@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace Hex
 {
@@ -11,6 +12,7 @@ namespace Hex
     /// </summary>
     public struct Resource
     {
+        const string xmlTypeString = "Type";
         readonly ResourceType type;
         uint ammount;
         /// <summary>
@@ -31,6 +33,24 @@ namespace Hex
         {
             type = resource.type;
             ammount = resource.ammount;
+        }
+        public Resource(XmlElement elem, out bool done)
+        {
+            type = ResourceType.Coal;
+            ammount = 0;
+            done = false;
+            string tStr = elem.GetAttribute(xmlTypeString);
+            ResourceType typ;
+            if (Enum.TryParse(tStr, out typ))
+            {
+                uint amm;
+                if (uint.TryParse(elem.Value, out amm))
+                {
+                    type = typ;
+                    ammount = amm;
+                    done = true;
+                }
+            }
         }
         /// <summary>
         /// Typ zasobu.
@@ -103,6 +123,13 @@ namespace Hex
         public bool Empty
         {
             get { return ammount == 0; }
+        }
+        public XmlElement GetXmlElement(XmlDocument doc)
+        {
+            XmlElement result = doc.CreateElement("Resource");
+            result.SetAttribute(xmlTypeString, Type.ToString());
+            result.Value = ammount.ToString();
+            return result;
         }
     }
     /// <summary>

@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace Hex
 {
     public class Cost : IEnumerable<Material>
     {
+        const string xmlDefaultNameString = "Cost";
         uint[] values = new uint[Enum.GetValues(typeof(MaterialType)).Length];
         public Cost (MaterialType[] types, uint[] values)
         {
@@ -33,6 +35,36 @@ namespace Hex
             }
         }
         public Cost() { }
+        public Cost(XmlElement elem)
+        {
+            foreach (XmlElement mater in elem)
+            {
+                bool accept;
+                Material mat = new Material(mater, out accept);
+                if (accept)
+                {
+                    this[mat.Type] += mat.Ammount;
+                }
+            }
+        }
+        /// <summary>
+        /// Tworzy XmlElement na podstawie kosztu.
+        /// </summary>
+        /// <param name="doc">Dokument dla którego towrzony jest element</param>
+        /// <param name="name">Nazwa z jaką element ma być utworzony</param>
+        /// <returns></returns>
+        public XmlElement GetXmlElement(XmlDocument doc)
+        {
+            XmlElement result = doc.CreateElement(xmlDefaultNameString);
+            foreach (MaterialType mat in Enum.GetValues(typeof(MaterialType)))
+            {
+                if (this[mat] > 0)
+                {
+                    result.AppendChild(new Material(mat, this[mat]).GetXmlElement(doc));
+                }
+            }
+            return result;
+        }
         public IEnumerator<Material> GetEnumerator()
         {
             for (int i = 0; i < values.Length; ++i)

@@ -8,6 +8,7 @@ using Hex.Buildings;
 using System.Drawing;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Xml;
 
 namespace Hex
 {
@@ -16,6 +17,9 @@ namespace Hex
     /// </summary>
     public class Field
     {
+        private static string xmlTypeString = "Type";
+        private static string xmlXString = "X";
+        private static string xmlYString = "Y";
         readonly int x, y;
         const int MAXSIZE = 8;
         Resource[] stack = new Resource[MAXSIZE];
@@ -254,6 +258,14 @@ namespace Hex
         {
             while (stack[top].Ammount == 0 && top < 8) ++top;
             updateBrushes();
+        }
+        public virtual XmlElement GetXmlElement(XmlDocument doc, string name)
+        {
+            XmlElement result = doc.CreateElement(name);
+            result.SetAttribute(xmlTypeString, Type.ToString());
+            result.SetAttribute(xmlXString, x.ToString());
+            result.SetAttribute(xmlYString, y.ToString());
+            return result;
         }
     }
     /// <summary>
