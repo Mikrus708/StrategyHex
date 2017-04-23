@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml;
 
 namespace WpfHex
 {
@@ -37,10 +38,11 @@ namespace WpfHex
             initMaterialList();
             this.KeyDown += Arrows;
             this.MouseWheel += Zoom;
-            
+            loadMap("../../Mapa.xml");
+
            // Canv.Key
            // Canv.key
-            
+
         }
 
         private void Zoom(object sender, MouseWheelEventArgs e)
@@ -158,6 +160,16 @@ namespace WpfHex
             foreach (MaterialType type in Enum.GetValues(typeof(MaterialType)))
             {
                 materialList.Items.Add(new Material(type, 1000));
+            }
+        }
+        private void loadMap(string name)
+        {
+            hhg = HexagonalHexGrig.LoadXML(name, Brushes.Purple, 35, Canv, new Point(400, 350));
+            var ran = new Random();
+            foreach (var he in hhg.Hexes)
+            {
+                he.MouseDown += reactionToHexClick;
+                he.bru = he.Fill = he.Field.CombinedBrush;
             }
         }
     }

@@ -14,7 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using System.Xml;
 
 namespace WpfHex
 {
@@ -30,9 +30,8 @@ namespace WpfHex
         private double size;
         private Field hexField;
         public Hex() { }
-        public Hex(Point center, double Size, Brush b, Field field = null, Canvas c = null, MouseButtonEventHandler HexFunc = null)
+        public Hex(Point center, double Size, Brush b, Canvas c = null, MouseButtonEventHandler HexFunc = null)
         {
-            hexField = field;
             size = Size;
             double sqrt = Size * Math.Sqrt(3) / 2;
             points = new PointCollection(6);
@@ -160,7 +159,7 @@ namespace WpfHex
             Hex[,] hexgrid = new Hex[c, r];
             for (int j = 0; j < hexgrid.GetLength(1); ++j)
                 for (int i = 0; i < hexgrid.GetLength(0); ++i)
-                    hexgrid[i, j] = new Hex(new Point(Size + 3 * i * Size + 3 * (j % 2) * Size / 2, Size + j * sqrt2), Size-2, b, new Field(i, j), Canv);
+                    hexgrid[i, j] = new Hex(new Point(Size + 3 * i * Size + 3 * (j % 2) * Size / 2, Size + j * sqrt2), Size-2, b, Canv);
             hexG = hexgrid;
 
         }
@@ -170,6 +169,8 @@ namespace WpfHex
     {
         public Hex[][] hexG;
         public Hex Center;
+        private const string xmlRootElemStr = "Map";
+        private const string xmlSizeAtrStr = "Size";
 
         private int size;
         public HexagonalHexGrig(int n, Brush b, int Size, Canvas Canv, Point Center) : base()
@@ -191,12 +192,25 @@ namespace WpfHex
             for (int i = 0; i < n - 1; i++)
                 for (int j = 0; j < hexG[i].Length; j++)
                 {
-                    hexG[i][j] = new Hex(new Point(Center.X - (n - 1 - i) * (Size + 2) * 3 / 2 , Center.Y - (n - 1 + i * 2) * sqrt + 2 * j * sqrt + i % 2 * sqrt + 2 * (i / 2 * sqrt)), Size, b, new Field(i, j), Canv);
-                    hexG[hexG.Length - 1 - i][j] = new Hex(new Point(Center.X + (n - 1 - i) * (Size + 2) * 3 / 2 , Center.Y - (n - 1 + i * 2) * sqrt + 2 * j * sqrt + i % 2 * sqrt + 2 * (i / 2 * sqrt)), Size, b, new Field(hexG.Length - 1 - i, j), Canv);
+                    hexG[i][j] = new Hex(new Point(Center.X - (n - 1 - i) * (Size + 2) * 3 / 2 , Center.Y - (n - 1 + i * 2) * sqrt + 2 * j * sqrt + i % 2 * sqrt + 2 * (i / 2 * sqrt)), Size, b, Canv);
+                    hexG[hexG.Length - 1 - i][j] = new Hex(new Point(Center.X + (n - 1 - i) * (Size + 2) * 3 / 2 , Center.Y - (n - 1 + i * 2) * sqrt + 2 * j * sqrt + i % 2 * sqrt + 2 * (i / 2 * sqrt)), Size, b, Canv);
                 }
             for (int i = 0; i < 2 * n - 1; i++)
             {
-                hexG[n - 1][i] = new Hex(new Point(Center.X, Center.Y + 2 * (-n + i + 1) * sqrt), Size, b, new Field(n - 1, i), Canv);
+                hexG[n - 1][i] = new Hex(new Point(Center.X, Center.Y + 2 * (-n + i + 1) * sqrt), Size, b, Canv);
+            }
+            int c = 0;
+            for (int i = -size + 1; i < size; ++i)
+            {
+                for (int j = -size + 1; j < size; ++j)
+                {
+                    int k = -j - i;
+                    if (Math.Abs(k) < size)
+                    {
+                        ++c;
+                        this[i, j, k].Field = new Field(i, j);
+                    }
+                }
             }
         }
         public IEnumerable<Hex> Surrounding(int n,  int x, int y, int z=0)
@@ -268,8 +282,7 @@ namespace WpfHex
             }
             //function cube_ring(center, radius):
 
-        }
-            
+        }          
         public IEnumerable<Hex> Hexes
         {
             get
@@ -288,7 +301,6 @@ namespace WpfHex
         {
             get
             {
-
                 try
                 {
                     return hexG[size - 1 + x][x > 0 ? size + z - 1 : size - y - 1];
@@ -305,6 +317,42 @@ namespace WpfHex
                     return null;
                 }
             }
+        }
+        public bool SaveXML(string name)
+        {
+            XmlDocument doc = new XmlDocument();
+            XmlElement root = doc.CreateElement(xmlRootElemStr);
+            root.SetAttribute(xmlSizeAtrStr, size.ToString());
+            foreach (Hex h in Hexes)
+            {
+                root.AppendChild(h.Field.GetXmlElement(doc));
+            }
+            doc.AppendChild(root);
+            doc.Save(name);
+            return true;
+        }
+        static public HexagonalHexGrig LoadXML(string name, Brush b, int Size, Canvas Canv, Point Center)
+        {
+            HexagonalHexGrig result = null;
+            XmlDocument doc = new XmlDocument();
+            doc.Load(name);
+            if (doc.DocumentElement.Name == xmlRootElemStr)
+            {
+                int s;
+                if (int.TryParse(doc.DocumentElement.GetAttribute(xmlSizeAtrStr), out s) && s >= 0)
+                {
+                    result = new HexagonalHexGrig(s, b, Size, Canv, Center);
+                    foreach (XmlElement elem in doc.DocumentElement)
+                    {
+                        Field f = Field.GetFromXmlElement(elem);
+                        if (f != null)
+                        {
+                            result[f.X, f.Y, f.Z].Field = f;
+                        }
+                    }
+                }
+            }
+            return result;
         }
     }
 
