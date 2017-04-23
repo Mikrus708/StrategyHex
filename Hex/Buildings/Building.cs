@@ -16,13 +16,17 @@ namespace Hex.Buildings
     public abstract class Building
     {
         protected uint baseRange;
-        private static string xmlTypeString = "Type";
-        public static Building FactoryBuilding(XmlElement elem)
+        const string xmlTypeString = "Type";
+        const string xmlDefName = "Building";
+        public static Building GetFromXmlElement(XmlElement elem)
         {
-            BuildingType typ;
-            if (Enum.TryParse(elem.GetAttribute(xmlTypeString), out typ))
+            if (elem.Name == xmlDefName)
             {
-                return FactoryBuilding(typ);
+                BuildingType typ;
+                if (Enum.TryParse(elem.GetAttribute(xmlTypeString), out typ))
+                {
+                    return FactoryBuilding(typ);
+                }
             }
             return null;
         }
@@ -81,9 +85,9 @@ namespace Hex.Buildings
         {
             get { return baseRange; }
         }
-        public virtual XmlElement GetXmlElement(XmlDocument doc, string name)
+        public virtual XmlElement GetXmlElement(XmlDocument doc)
         {
-            XmlElement result = doc.CreateElement(name);
+            XmlElement result = doc.CreateElement(xmlDefName);
             result.SetAttribute(xmlTypeString, Type.ToString());
             return result;
         }

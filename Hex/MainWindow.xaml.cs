@@ -29,8 +29,7 @@ namespace WpfHex
 
         public MainWindow()
         {
-            BuildingsCosts.LoadCosts("../../BuildingCosts.xml");
-            BuildingsCosts.SaveCosts("../../BuildingCosts.xml");
+            BuildingsCosts.LoadCosts("../../GameSettings/BuildingCosts.xml");
             InitializeComponent();
             initComboBuild();
             initMaterialList();

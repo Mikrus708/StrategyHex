@@ -17,9 +17,12 @@ namespace Hex
     /// </summary>
     public class Field
     {
-        private static string xmlTypeString = "Type";
-        private static string xmlXString = "X";
-        private static string xmlYString = "Y";
+        const string xmlTypeString = "Type";
+        const string xmlXString = "X";
+        const string xmlYString = "Y";
+        const string xmlStackString = "ResourceStack";
+        const string xmlDefName = "Field";
+        const string xmlBuildName = "Buildings";
         readonly int x, y;
         const int MAXSIZE = 8;
         Resource[] stack = new Resource[MAXSIZE];
@@ -259,12 +262,58 @@ namespace Hex
             while (stack[top].Ammount == 0 && top < 8) ++top;
             updateBrushes();
         }
-        public virtual XmlElement GetXmlElement(XmlDocument doc, string name)
+        public virtual XmlElement GetXmlElement(XmlDocument doc)
         {
-            XmlElement result = doc.CreateElement(name);
+            XmlElement result = doc.CreateElement(xmlDefName);
             result.SetAttribute(xmlTypeString, Type.ToString());
             result.SetAttribute(xmlXString, x.ToString());
             result.SetAttribute(xmlYString, y.ToString());
+            XmlElement build = doc.CreateElement(xmlBuildName);
+            if (building != null)
+            {
+                build.AppendChild(building.GetXmlElement(doc));
+            }
+            result.AppendChild(build);
+            XmlElement resStack = doc.CreateElement(xmlStackString);
+            foreach (Resource res in Resources)
+            {
+                resStack.AppendChild(res.GetXmlElement(doc));
+            }
+            result.AppendChild(resStack);
+            return result;
+        }
+        public static Field GetFromXmlElement(XmlElement elem)
+        {
+            Field result = null;
+            if (elem.Name == xmlDefName)
+            {
+                string tstr = elem.GetAttribute(xmlTypeString);
+                string xstr = elem.GetAttribute(xmlXString);
+                string ystr = elem.GetAttribute(xmlYString);
+                FieldType _type;
+                int _x, _y;
+                if (Enum.TryParse(tstr, out _type) && int.TryParse(xstr, out _x) && int.TryParse(ystr, out _y))
+                {
+                    result = new Field(_x, _y, _type);
+                    XmlElement holder = (XmlElement)elem.SelectSingleNode(xmlStackString);
+                    if (holder != null)
+                    {
+                        foreach (XmlElement reso in holder)
+                        {
+                            Resource? tmp = Resource.GetFromXmlElement(reso);
+                            if (tmp != null)
+                            {
+                                result.AddResource((Resource)tmp);
+                            }
+                        }
+                    }
+                    holder = (XmlElement)elem.SelectSingleNode(xmlBuildName);
+                    if (holder != null)
+                    {
+                        result.building = Building.GetFromXmlElement(holder);
+                    }
+                }
+            }
             return result;
         }
     }

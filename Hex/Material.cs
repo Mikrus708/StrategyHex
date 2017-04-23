@@ -15,6 +15,7 @@ namespace Hex
     public struct Material
     {
         const string xmlTypeString = "Type";
+        const string xmlDefName = "Material";
         readonly MaterialType type;
         uint ammount;
         /// <summary>
@@ -47,23 +48,21 @@ namespace Hex
             type = material.type;
             ammount = material.ammount;
         }
-        public Material (XmlElement elem, out bool done)
+        public static Material? GetFromXmlElement (XmlElement elem)
         {
-            type = MaterialType.Coal;
-            ammount = 0;
-            done = false;
-            string tStr = elem.GetAttribute(xmlTypeString);
-            MaterialType typ;
-            if (Enum.TryParse(tStr, out typ))
+            if (elem.Name == xmlDefName)
             {
-                uint amm;
-                if (uint.TryParse(elem.InnerText, out amm))
+                MaterialType typ;
+                if (Enum.TryParse(elem.GetAttribute(xmlTypeString), out typ))
                 {
-                    type = typ;
-                    ammount = amm;
-                    done = true;
+                    uint amm;
+                    if (uint.TryParse(elem.InnerText, out amm))
+                    {
+                        return new Material(typ, amm);
+                    }
                 }
             }
+            return null;
         }
         public static Material operator +(Material material, uint ammount)
         {
@@ -152,7 +151,7 @@ namespace Hex
         }
         public XmlElement GetXmlElement(XmlDocument doc)
         {
-            XmlElement result = doc.CreateElement("Material");
+            XmlElement result = doc.CreateElement(xmlDefName);
             result.SetAttribute(xmlTypeString, Type.ToString());
             result.InnerText = ammount.ToString();
             return result;

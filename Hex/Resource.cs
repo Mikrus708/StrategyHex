@@ -13,6 +13,7 @@ namespace Hex
     public struct Resource
     {
         const string xmlTypeString = "Type";
+        const string xmlDefName = "Resource";
         readonly ResourceType type;
         uint ammount;
         /// <summary>
@@ -34,23 +35,21 @@ namespace Hex
             type = resource.type;
             ammount = resource.ammount;
         }
-        public Resource(XmlElement elem, out bool done)
+        public static Resource? GetFromXmlElement(XmlElement elem)
         {
-            type = ResourceType.Coal;
-            ammount = 0;
-            done = false;
-            string tStr = elem.GetAttribute(xmlTypeString);
-            ResourceType typ;
-            if (Enum.TryParse(tStr, out typ))
+            if (elem.Name == xmlDefName)
             {
-                uint amm;
-                if (uint.TryParse(elem.Value, out amm))
+                ResourceType typ;
+                if (Enum.TryParse(elem.GetAttribute(xmlTypeString), out typ))
                 {
-                    type = typ;
-                    ammount = amm;
-                    done = true;
+                    uint amm;
+                    if (uint.TryParse(elem.InnerText, out amm))
+                    {
+                        return new Resource(typ, amm);
+                    }
                 }
             }
+            return null;
         }
         /// <summary>
         /// Typ zasobu.
@@ -126,9 +125,9 @@ namespace Hex
         }
         public XmlElement GetXmlElement(XmlDocument doc)
         {
-            XmlElement result = doc.CreateElement("Resource");
+            XmlElement result = doc.CreateElement(xmlDefName);
             result.SetAttribute(xmlTypeString, Type.ToString());
-            result.Value = ammount.ToString();
+            result.InnerText = ammount.ToString();
             return result;
         }
     }

@@ -91,6 +91,14 @@ namespace Hex.GameSettings
         }
         public static bool LoadCosts(string name)
         {
+
+            for (int i = 0; i < costs.Length; ++i)
+            {
+                for (int j = 0; j < costs[i].Length; ++j)
+                {
+                    costs[i][j] = new Cost();
+                }
+            }
             XmlDocument doc = new XmlDocument();
             doc.Load(name);
             if (doc.DocumentElement.Name != xmlRootString)
@@ -107,7 +115,11 @@ namespace Hex.GameSettings
                         CostType ctype;
                         if (Enum.TryParse(cs.GetAttribute(xmlTypeString), out ctype))
                         {
-                            costs[(int)ctype][(int)bud] = new Cost(cs);
+                            Cost tmp = Cost.GetFromXmlElement(cs);
+                            if (tmp != null)
+                            {
+                                costs[(int)ctype][(int)bud] = Cost.GetFromXmlElement(cs);
+                            }
                         }
                     }
                 }
