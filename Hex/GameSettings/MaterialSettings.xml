@@ -1,0 +1,42 @@
+<MaterialSettings>
+  <Food>
+    <GetFrom>
+      <Grain />
+      <Fishes />
+    </GetFrom>
+  </Food>
+  <Wood>
+    <GetFrom>
+      <Forest />
+    </GetFrom>
+  </Wood>
+  <Stone>
+    <GetFrom>
+      <Stone />
+    </GetFrom>
+  </Stone>
+  <Gold>
+    <GetFrom />
+  </Gold>
+  <Population>
+    <GetFrom />
+  </Population>
+  <IronOre>
+    <GetFrom>
+      <Iron />
+    </GetFrom>
+  </IronOre>
+  <Coal>
+    <GetFrom>
+      <Coal />
+    </GetFrom>
+  </Coal>
+  <IronBar>
+    <GetFrom />
+  </IronBar>
+  <GoldOre>
+    <GetFrom>
+      <Gold />
+    </GetFrom>
+  </GoldOre>
+</MaterialSettings>

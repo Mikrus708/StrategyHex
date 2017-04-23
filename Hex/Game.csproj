@@ -64,7 +64,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="GameSettings\BuildingsCosts.cs" />
+    <Compile Include="GameSettings\BuildingsSettings.cs" />
     <Compile Include="Buildings\Building.cs" />
     <Compile Include="Buildings\CoalMine.cs" />
     <Compile Include="Buildings\Farm.cs" />
@@ -80,6 +80,8 @@
     <Compile Include="Buildings\TownHall.cs" />
     <Compile Include="Cost.cs" />
     <Compile Include="Field.cs" />
+    <Compile Include="GameSettings\MaterialSettings.cs" />
+    <Compile Include="GameSettings\ResourceSettings.cs" />
     <Compile Include="Hex.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -137,7 +139,7 @@
     <Resource Include="Resources\HexFields\sea.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="GameSettings\BuildingCosts.xml" />
+    <Resource Include="GameSettings\BuildingsSettings.xml" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\MaterialImage\coal.png" />
@@ -149,6 +151,12 @@
     <Resource Include="Resources\MaterialImage\population.png" />
     <Resource Include="Resources\MaterialImage\stone.png" />
     <Resource Include="Resources\MaterialImage\wood.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="GameSettings\ResourceSettings.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="GameSettings\MaterialSettings.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

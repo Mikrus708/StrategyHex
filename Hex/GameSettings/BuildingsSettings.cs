@@ -11,12 +11,14 @@ using System.Xml.Serialization;
 
 namespace Hex.GameSettings
 {
-    public static class BuildingsCosts
+    public static class BuildingsSettings
     {
         static Cost[][] costs;
-        const string xmlRootString = "BuildingCosts";
+        static uint[] range;
+        const string xmlRootString = "BuildingSettings";
         const string xmlTypeString = "Type";
-        static BuildingsCosts()
+        const string xmlRangeString = "Range";
+        static BuildingsSettings()
         {
             costs = new Cost[Enum.GetValues(typeof(CostType)).Length][];
             for (int i = 0; i < costs.Length; ++i)
@@ -27,6 +29,11 @@ namespace Hex.GameSettings
                     costs[i][j] = new Cost();
                 }
             }
+            range = new uint[Enum.GetValues(typeof(BuildingType)).Length];
+        }
+        public static uint GetSightRange(BuildingType type)
+        {
+            return range[(int)type];
         }
         public static Cost GetBuildCost(BuildingType type)
         {
@@ -36,6 +43,10 @@ namespace Hex.GameSettings
         {
             return costs[(int)CostType.Upkeep][(int)type];
         }
+        public static void SetSightRange(BuildingType type, uint sightRange)
+        {
+            range[(int)type] = sightRange;
+        }
         public static void SetBuildCost(BuildingType type, Cost cost)
         {
             costs[(int)CostType.Build][(int)type] = cost;
@@ -44,7 +55,43 @@ namespace Hex.GameSettings
         {
             costs[(int)CostType.Upkeep][(int)type] = cost;
         }
-        public static bool SaveCosts(string name)
+        static XmlNode writeBuildingNode(XmlDocument doc, BuildingType type)
+        {
+            XmlElement building = doc.CreateElement(type.ToString());
+            foreach (CostType ctype in Enum.GetValues(typeof(CostType)))
+            {
+                var elem = costs[(int)ctype][(int)type].GetXmlElement(doc);
+                elem.SetAttribute(xmlTypeString, ctype.ToString());
+                building.AppendChild(elem);
+            }
+            building.SetAttribute(xmlRangeString, range[(int)type].ToString());
+            return building;
+        }
+        static void readBuildingNode(XmlElement node)
+        {
+            BuildingType bud;
+            if (Enum.TryParse(node.Name, out bud))
+            {
+                uint r;
+                if (uint.TryParse(node.GetAttribute(xmlRangeString), out r))
+                {
+                    range[(int)bud] = r;
+                }
+                foreach (XmlElement cs in node)
+                {
+                    CostType ctype;
+                    if (Enum.TryParse(cs.GetAttribute(xmlTypeString), out ctype))
+                    {
+                        Cost tmp = Cost.GetFromXmlElement(cs);
+                        if (tmp != null)
+                        {
+                            costs[(int)ctype][(int)bud] = Cost.GetFromXmlElement(cs);
+                        }
+                    }
+                }
+            }
+        }
+        public static bool Save(string name)
         {
             Random ran = new Random();
             var tab = (MaterialType[])Enum.GetValues(typeof(MaterialType));
@@ -77,21 +124,13 @@ namespace Hex.GameSettings
             XmlElement root = (XmlElement)doc.AppendChild(doc.CreateElement(xmlRootString));
             foreach (BuildingType type in Enum.GetValues(typeof(BuildingType)))
             {
-                XmlElement building = doc.CreateElement(type.ToString());
-                foreach (CostType ctype in Enum.GetValues(typeof(CostType)))
-                {
-                    var elem = costs[(int)ctype][(int)type].GetXmlElement(doc);
-                    elem.SetAttribute(xmlTypeString, ctype.ToString());
-                    building.AppendChild(elem);
-                }
-                root.AppendChild(building);
+                root.AppendChild(writeBuildingNode(doc, type));
             }
             doc.Save(name);
             return true;
         }
-        public static bool LoadCosts(string name)
+        public static bool Load(string name)
         {
-
             for (int i = 0; i < costs.Length; ++i)
             {
                 for (int j = 0; j < costs[i].Length; ++j)
@@ -107,26 +146,10 @@ namespace Hex.GameSettings
             } 
             foreach (XmlElement build in doc.DocumentElement)
             {
-                BuildingType bud;
-                if (Enum.TryParse(build.Name, out bud))
-                {
-                    foreach (XmlElement cs in build)
-                    {
-                        CostType ctype;
-                        if (Enum.TryParse(cs.GetAttribute(xmlTypeString), out ctype))
-                        {
-                            Cost tmp = Cost.GetFromXmlElement(cs);
-                            if (tmp != null)
-                            {
-                                costs[(int)ctype][(int)bud] = Cost.GetFromXmlElement(cs);
-                            }
-                        }
-                    }
-                }
+                readBuildingNode(build);
             }
             return true;
         }
-
         private enum CostType
         {
             Build,

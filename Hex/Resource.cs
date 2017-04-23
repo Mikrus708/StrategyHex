@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hex.GameSettings;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -97,24 +98,9 @@ namespace Hex
             this.ammount -= Math.Min(this.ammount, ammount);
             return result;
         }
-        static public int GetLayer(ResourceType type)
+        public int Layer
         {
-            switch (type)
-            {
-                case ResourceType.Forest:
-                case ResourceType.Grain:
-                case ResourceType.Fishes:
-                    return 0;
-                case ResourceType.Coal:
-                case ResourceType.Stone:
-                    return 1;
-                case ResourceType.Iron:
-                    return 2;
-                case ResourceType.Gold:
-                    return 3;
-                default:
-                    throw new NotImplementedException($"Brakuje implenetacji dla ResourceType.{type} w Resource.GetLayer()");
-            }
+            get { return ResourceSettings.GetLayer(type); }
         }
         /// <summary>
         /// Czy zasób jest pusty.

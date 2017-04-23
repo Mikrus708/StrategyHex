@@ -1,0 +1,9 @@
+<ResourceSettings>
+  <Forest Layer="0" />
+  <Stone Layer="1" />
+  <Grain Layer="0" />
+  <Fishes Layer="0" />
+  <Gold Layer="4" />
+  <Iron Layer="3" />
+  <Coal Layer="2" />
+</ResourceSettings>

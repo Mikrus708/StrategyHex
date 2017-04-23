@@ -1,5 +1,5 @@
-<BuildingCosts>
-  <Hut>
+<BuildingSettings>
+  <Hut Range="4">
     <Cost Type="Build">
       <Material Type="Wood">200</Material>
       <Material Type="Population">150</Material>
@@ -9,7 +9,7 @@
     </Cost>
     <Cost Type="Upkeep" />
   </Hut>
-  <TownHall>
+  <TownHall Range="4">
     <Cost Type="Build">
       <Material Type="Food">50</Material>
       <Material Type="Stone">50</Material>
@@ -20,7 +20,7 @@
     </Cost>
     <Cost Type="Upkeep" />
   </TownHall>
-  <SmallTower>
+  <SmallTower Range="4">
     <Cost Type="Build">
       <Material Type="Wood">100</Material>
       <Material Type="Gold">50</Material>
@@ -30,7 +30,7 @@
     </Cost>
     <Cost Type="Upkeep" />
   </SmallTower>
-  <Sawmill>
+  <Sawmill Range="4">
     <Cost Type="Build">
       <Material Type="Wood">100</Material>
       <Material Type="Gold">150</Material>
@@ -43,7 +43,7 @@
       <Material Type="Food">100</Material>
     </Cost>
   </Sawmill>
-  <StoneMine>
+  <StoneMine Range="4">
     <Cost Type="Build">
       <Material Type="Food">100</Material>
       <Material Type="Gold">50</Material>
@@ -55,7 +55,7 @@
       <Material Type="Coal">50</Material>
     </Cost>
   </StoneMine>
-  <Farm>
+  <Farm Range="4">
     <Cost Type="Build">
       <Material Type="Food">50</Material>
       <Material Type="Wood">50</Material>
@@ -68,7 +68,7 @@
       <Material Type="GoldOre">150</Material>
     </Cost>
   </Farm>
-  <IronMine>
+  <IronMine Range="4">
     <Cost Type="Build">
       <Material Type="Wood">100</Material>
       <Material Type="Gold">150</Material>
@@ -77,7 +77,7 @@
     </Cost>
     <Cost Type="Upkeep" />
   </IronMine>
-  <CoalMine>
+  <CoalMine Range="4">
     <Cost Type="Build">
       <Material Type="Food">250</Material>
       <Material Type="Gold">50</Material>
@@ -85,7 +85,7 @@
     </Cost>
     <Cost Type="Upkeep" />
   </CoalMine>
-  <SteelWorks>
+  <SteelWorks Range="4">
     <Cost Type="Build">
       <Material Type="Food">50</Material>
       <Material Type="Wood">100</Material>
@@ -99,7 +99,7 @@
       <Material Type="IronBar">150</Material>
     </Cost>
   </SteelWorks>
-  <FishermanHut>
+  <FishermanHut Range="4">
     <Cost Type="Build">
       <Material Type="Food">150</Material>
       <Material Type="Stone">150</Material>
@@ -110,7 +110,7 @@
     </Cost>
     <Cost Type="Upkeep" />
   </FishermanHut>
-  <GoldMine>
+  <GoldMine Range="4">
     <Cost Type="Build">
       <Material Type="Wood">250</Material>
       <Material Type="Gold">100</Material>
@@ -122,7 +122,7 @@
       <Material Type="Population">50</Material>
     </Cost>
   </GoldMine>
-  <LumberjackHut>
+  <LumberjackHut Range="4">
     <Cost Type="Build">
       <Material Type="Wood">50</Material>
       <Material Type="Stone">150</Material>
@@ -133,4 +133,4 @@
       <Material Type="Stone">100</Material>
     </Cost>
   </LumberjackHut>
-</BuildingCosts>
+</BuildingSettings>

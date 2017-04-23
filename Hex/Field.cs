@@ -9,6 +9,7 @@ using System.Drawing;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Xml;
+using Hex.GameSettings;
 
 namespace Hex
 {
@@ -24,8 +25,7 @@ namespace Hex
         const string xmlDefName = "Field";
         const string xmlBuildName = "Buildings";
         readonly int x, y;
-        const int MAXSIZE = 8;
-        Resource[] stack = new Resource[MAXSIZE];
+        Resource[] stack = new Resource[ResourceSettings.NumberOfLayers];
         ImageBrush fieldBrush = new ImageBrush();
         DrawingBrush combinedBrush = new DrawingBrush();
         byte top;
@@ -34,7 +34,7 @@ namespace Hex
         public Field()
         {
             x = y = 0;
-            top = 8;
+            top = ResourceSettings.NumberOfLayers;
             updateBrushes();
         }
         public Field(int _x, int _y, FieldType type = FieldType.Grass)
@@ -42,7 +42,7 @@ namespace Hex
             x = _x;
             y = _y;
             this.type = type;
-            top = 8;
+            top = ResourceSettings.NumberOfLayers;
             updateBrushes();
         }
         private void updateBrushes()
@@ -146,7 +146,7 @@ namespace Hex
         /// <returns>Czy udało się dodać zasób</returns>
         public bool AddResource(Resource resource)
         {
-            int lay = Resource.GetLayer(resource.Type);
+            int lay = resource.Layer;
             if (stack[lay].Empty || stack[lay].Type == resource.Type)
             {
                 stack[lay] = resource + stack[lay].Ammount;
@@ -175,7 +175,7 @@ namespace Hex
                 }
                 if (change)
                     updateBrushes();
-                return top == 8 ? null : (Resource?)stack[top];
+                return top == ResourceSettings.NumberOfLayers ? null : (Resource?)stack[top];
             }
         }
         /// <summary>

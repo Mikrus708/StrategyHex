@@ -29,7 +29,9 @@ namespace WpfHex
 
         public MainWindow()
         {
-            BuildingsCosts.LoadCosts("../../GameSettings/BuildingCosts.xml");
+            BuildingsSettings.Load("../../GameSettings/BuildingsSettings.xml");
+            ResourceSettings.Load("../../GameSettings/ResourceSettings.xml");
+            MaterialSettings.Load("../../GameSettings/MaterialSettings.xml");
             InitializeComponent();
             initComboBuild();
             initMaterialList();

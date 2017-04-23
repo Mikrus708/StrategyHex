@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hex.GameSettings;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -74,16 +75,16 @@ namespace Hex.Buildings
         }
         public virtual Cost BuildCost
         {
-            get { return GameSettings.BuildingsCosts.GetBuildCost(Type); }
+            get { return BuildingsSettings.GetBuildCost(Type); }
         }
         public virtual Cost UpkeepCost
         {
-            get { return GameSettings.BuildingsCosts.GetUpkeepCost(Type); }
+            get { return BuildingsSettings.GetUpkeepCost(Type); }
         }
         public abstract BuildingType Type { get; }
         public virtual uint Range
         {
-            get { return baseRange; }
+            get { return BuildingsSettings.GetSightRange(Type); }
         }
         public virtual XmlElement GetXmlElement(XmlDocument doc)
         {
