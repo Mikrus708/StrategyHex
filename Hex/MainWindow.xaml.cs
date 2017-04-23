@@ -137,24 +137,8 @@ namespace WpfHex
 
         private void button2_Click(object sender, RoutedEventArgs e)
         {
-            if (hhg == null) return;
-            int x;
-            int y;
-            int z;
-            if (int.TryParse(textBox.Text, out x) &&
-            int.TryParse(textBox1.Text, out y) &&
-            int.TryParse(textBox2.Text, out z))
-            {
-                if (x + y + z == 0)
-                {
-                    hhg[x, y, z].Fill = hhg[x, y, z].bru = new SolidColorBrush(actual);
-
-                }
-                else
-                    MessageBox.Show("Podane indeksy nie sumuja się do zera.");
-            }
-            else
-                MessageBox.Show("Indeks musi być liczbą");
+            foreach (Hex h in hhg.Surrounding(2, 0, 0))
+                h.stro = h.Stroke = Brushes.Aqua;
         }
 
         private void checkBox_Checked(object sender, RoutedEventArgs e)
