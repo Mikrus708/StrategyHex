@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hex.GameSettings;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -97,24 +98,7 @@ namespace Hex
         /// <returns>Odpowiadający typ surowca</returns>
         public static MaterialType GetTypeOfMaterial(ResourceType type)
         {
-            switch (type)
-            {
-                case ResourceType.Forest:
-                    return MaterialType.Wood;
-                case ResourceType.Stone:
-                    return MaterialType.Stone;
-                case ResourceType.Grain:
-                case ResourceType.Fishes:
-                    return MaterialType.Food;
-                case ResourceType.Gold:
-                    return MaterialType.GoldOre;
-                case ResourceType.Iron:
-                    return MaterialType.IronOre;
-                case ResourceType.Coal:
-                    return MaterialType.Coal;
-                default:
-                    throw new NotImplementedException($"ResourceType.{type.ToString()} niezaimplementowany w Material.GetType()");
-            }
+            return MaterialSettings.GetMaterialFromResource(type);
         }
         public Brush Brush
         {

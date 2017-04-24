@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 using System.Xml;
 
 namespace Hex
@@ -98,6 +99,12 @@ namespace Hex
             this.ammount -= Math.Min(this.ammount, ammount);
             return result;
         }
+        public Resource GatherAll()
+        {
+            Resource result = new Resource(this);
+            this.ammount = 0;
+            return result;
+        }
         public int Layer
         {
             get { return ResourceSettings.GetLayer(type); }
@@ -115,6 +122,10 @@ namespace Hex
             result.SetAttribute(xmlTypeString, Type.ToString());
             result.InnerText = ammount.ToString();
             return result;
+        }
+        public Brush FiledBrush
+        {
+            get { return ResourceSettings.GetBrush(type); }
         }
     }
     /// <summary>

@@ -38,7 +38,10 @@ namespace WpfHex
             initMaterialList();
             this.KeyDown += Arrows;
             this.MouseWheel += Zoom;
-            loadMap("../../Mapa.xml");
+            if (System.IO.File.Exists("../../Mapa.xml"))
+            {
+                loadMap("../../Mapa.xml");
+            }
 
            // Canv.Key
            // Canv.key
@@ -80,7 +83,6 @@ namespace WpfHex
                     }
             }
         }
-
 
         private void hexdupa(object sender, RoutedEventArgs e)
         {

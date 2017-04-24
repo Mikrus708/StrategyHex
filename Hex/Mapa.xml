@@ -7,9 +7,7 @@
   </Field>
   <Field Type="Mountain" X="-5" Y="4">
     <Buildings />
-    <ResourceStack>
-      <Resource Type="Fishes">817</Resource>
-    </ResourceStack>
+    <ResourceStack />
   </Field>
   <Field Type="Mountain" X="-5" Y="3">
     <Buildings />
@@ -49,9 +47,7 @@
   </Field>
   <Field Type="Mountain" X="-4" Y="3">
     <Buildings />
-    <ResourceStack>
-      <Resource Type="Fishes">440</Resource>
-    </ResourceStack>
+    <ResourceStack />
   </Field>
   <Field Type="Mountain" X="-4" Y="2">
     <Buildings />
@@ -67,86 +63,80 @@
   </Field>
   <Field Type="Mountain" X="-4" Y="0">
     <Buildings />
-    <ResourceStack>
-      <Resource Type="Forest">507</Resource>
-    </ResourceStack>
+    <ResourceStack />
   </Field>
   <Field Type="Sea" X="-4" Y="-1">
     <Buildings />
-    <ResourceStack>
-      <Resource Type="Forest">668</Resource>
-    </ResourceStack>
+    <ResourceStack />
   </Field>
-  <Field Type="Forest" X="-3" Y="5">
+  <Field Type="Grass" X="-3" Y="5">
     <Buildings />
     <ResourceStack>
-      <Resource Type="Iron">369</Resource>
+      <Resource Type="Forest">1416</Resource>
     </ResourceStack>
   </Field>
-  <Field Type="Forest" X="-3" Y="4">
+  <Field Type="Grass" X="-3" Y="4">
     <Buildings />
     <ResourceStack>
-      <Resource Type="Fishes">548</Resource>
+      <Resource Type="Forest">818</Resource>
     </ResourceStack>
   </Field>
-  <Field Type="Forest" X="-3" Y="3">
+  <Field Type="Grass" X="-3" Y="3">
     <Buildings />
     <ResourceStack>
-      <Resource Type="Coal">474</Resource>
+      <Resource Type="Forest">835</Resource>
     </ResourceStack>
   </Field>
-  <Field Type="Forest" X="-3" Y="2">
+  <Field Type="Grass" X="-3" Y="2">
     <Buildings />
     <ResourceStack>
-      <Resource Type="Gold">813</Resource>
+      <Resource Type="Forest">1034</Resource>
     </ResourceStack>
   </Field>
-  <Field Type="Forest" X="-3" Y="1">
+  <Field Type="Grass" X="-3" Y="1">
     <Buildings />
     <ResourceStack>
-      <Resource Type="Forest">437</Resource>
+      <Resource Type="Forest">598</Resource>
     </ResourceStack>
   </Field>
   <Field Type="Sea" X="-3" Y="0">
     <Buildings />
     <ResourceStack>
-      <Resource Type="Coal">450</Resource>
+      <Resource Type="Fishes">953</Resource>
     </ResourceStack>
   </Field>
   <Field Type="Sea" X="-3" Y="-1">
     <Buildings />
     <ResourceStack>
-      <Resource Type="Forest">942</Resource>
+      <Resource Type="Fishes">1150</Resource>
     </ResourceStack>
   </Field>
   <Field Type="Sea" X="-3" Y="-2">
     <Buildings />
-    <ResourceStack>
-      <Resource Type="Gold">555</Resource>
-    </ResourceStack>
+    <ResourceStack />
   </Field>
-  <Field Type="Forest" X="-2" Y="5">
+  <Field Type="Grass" X="-2" Y="5">
     <Buildings />
     <ResourceStack>
-      <Resource Type="Coal">442</Resource>
+      <Resource Type="Forest">2435</Resource>
     </ResourceStack>
   </Field>
-  <Field Type="Forest" X="-2" Y="4">
+  <Field Type="Grass" X="-2" Y="4">
     <Buildings />
     <ResourceStack>
-      <Resource Type="Grain">577</Resource>
+      <Resource Type="Forest">1807</Resource>
     </ResourceStack>
   </Field>
-  <Field Type="Forest" X="-2" Y="3">
+  <Field Type="Grass" X="-2" Y="3">
     <Buildings />
     <ResourceStack>
-      <Resource Type="Stone">712</Resource>
+      <Resource Type="Forest">375</Resource>
     </ResourceStack>
   </Field>
-  <Field Type="Forest" X="-2" Y="2">
+  <Field Type="Grass" X="-2" Y="2">
     <Buildings />
     <ResourceStack>
-      <Resource Type="Forest">827</Resource>
+      <Resource Type="Forest">950</Resource>
     </ResourceStack>
   </Field>
   <Field Type="Grass" X="-2" Y="1">
@@ -157,27 +147,23 @@
   </Field>
   <Field Type="Grass" X="-2" Y="0">
     <Buildings />
-    <ResourceStack>
-      <Resource Type="Forest">657</Resource>
-    </ResourceStack>
+    <ResourceStack />
   </Field>
   <Field Type="Sea" X="-2" Y="-1">
     <Buildings />
     <ResourceStack>
-      <Resource Type="Stone">751</Resource>
+      <Resource Type="Fishes">1225</Resource>
     </ResourceStack>
   </Field>
   <Field Type="Sea" X="-2" Y="-2">
     <Buildings />
     <ResourceStack>
-      <Resource Type="Grain">723</Resource>
+      <Resource Type="Fishes">1028</Resource>
     </ResourceStack>
   </Field>
   <Field Type="Sea" X="-2" Y="-3">
     <Buildings />
-    <ResourceStack>
-      <Resource Type="Forest">269</Resource>
-    </ResourceStack>
+    <ResourceStack />
   </Field>
   <Field Type="Mountain" X="-1" Y="5">
     <Buildings />
@@ -185,22 +171,22 @@
       <Resource Type="Coal">119</Resource>
     </ResourceStack>
   </Field>
-  <Field Type="Forest" X="-1" Y="4">
+  <Field Type="Grass" X="-1" Y="4">
     <Buildings />
     <ResourceStack>
-      <Resource Type="Stone">259</Resource>
+      <Resource Type="Forest">1409</Resource>
     </ResourceStack>
   </Field>
-  <Field Type="Forest" X="-1" Y="3">
+  <Field Type="Grass" X="-1" Y="3">
     <Buildings />
     <ResourceStack>
-      <Resource Type="Iron">583</Resource>
+      <Resource Type="Forest">1241</Resource>
     </ResourceStack>
   </Field>
   <Field Type="Grass" X="-1" Y="2">
     <Buildings />
     <ResourceStack>
-      <Resource Type="Forest">571</Resource>
+      <Resource Type="Forest">2073</Resource>
     </ResourceStack>
   </Field>
   <Field Type="Grass" X="-1" Y="1">
@@ -211,32 +197,24 @@
   </Field>
   <Field Type="Grass" X="-1" Y="0">
     <Buildings />
-    <ResourceStack>
-      <Resource Type="Fishes">125</Resource>
-    </ResourceStack>
+    <ResourceStack />
   </Field>
   <Field Type="Grass" X="-1" Y="-1">
     <Buildings />
-    <ResourceStack>
-      <Resource Type="Forest">113</Resource>
-    </ResourceStack>
+    <ResourceStack />
   </Field>
   <Field Type="Sea" X="-1" Y="-2">
     <Buildings />
-    <ResourceStack>
-      <Resource Type="Fishes">914</Resource>
-    </ResourceStack>
+    <ResourceStack />
   </Field>
   <Field Type="Sea" X="-1" Y="-3">
     <Buildings />
-    <ResourceStack>
-      <Resource Type="Fishes">475</Resource>
-    </ResourceStack>
+    <ResourceStack />
   </Field>
   <Field Type="Sea" X="-1" Y="-4">
     <Buildings />
     <ResourceStack>
-      <Resource Type="Gold">639</Resource>
+      <Resource Type="Fishes">1240</Resource>
     </ResourceStack>
   </Field>
   <Field Type="Mountain" X="0" Y="5">
@@ -251,15 +229,16 @@
       <Resource Type="Gold">396</Resource>
     </ResourceStack>
   </Field>
-  <Field Type="Forest" X="0" Y="3">
+  <Field Type="Grass" X="0" Y="3">
     <Buildings />
     <ResourceStack>
-      <Resource Type="Stone">889</Resource>
+      <Resource Type="Forest">2994</Resource>
     </ResourceStack>
   </Field>
   <Field Type="Grass" X="0" Y="2">
     <Buildings />
     <ResourceStack>
+      <Resource Type="Forest">2318</Resource>
       <Resource Type="Gold">991</Resource>
     </ResourceStack>
   </Field>
@@ -271,9 +250,7 @@
   </Field>
   <Field Type="Grass" X="0" Y="0">
     <Buildings />
-    <ResourceStack>
-      <Resource Type="Forest">855</Resource>
-    </ResourceStack>
+    <ResourceStack />
   </Field>
   <Field Type="Grass" X="0" Y="-1">
     <Buildings />
@@ -302,25 +279,21 @@
   <Field Type="Sea" X="0" Y="-5">
     <Buildings />
     <ResourceStack>
-      <Resource Type="Forest">334</Resource>
+      <Resource Type="Fishes">885</Resource>
     </ResourceStack>
   </Field>
   <Field Type="Mountain" X="1" Y="4">
     <Buildings />
-    <ResourceStack>
-      <Resource Type="Fishes">432</Resource>
-    </ResourceStack>
+    <ResourceStack />
   </Field>
   <Field Type="Mountain" X="1" Y="3">
     <Buildings />
-    <ResourceStack>
-      <Resource Type="Fishes">845</Resource>
-    </ResourceStack>
+    <ResourceStack />
   </Field>
-  <Field Type="Forest" X="1" Y="2">
+  <Field Type="Grass" X="1" Y="2">
     <Buildings />
     <ResourceStack>
-      <Resource Type="Fishes">318</Resource>
+      <Resource Type="Forest">1344</Resource>
     </ResourceStack>
   </Field>
   <Field Type="Grass" X="1" Y="1">
@@ -331,9 +304,7 @@
   </Field>
   <Field Type="Grass" X="1" Y="0">
     <Buildings />
-    <ResourceStack>
-      <Resource Type="Fishes">598</Resource>
-    </ResourceStack>
+    <ResourceStack />
   </Field>
   <Field Type="Grass" X="1" Y="-1">
     <Buildings />
@@ -347,22 +318,20 @@
       <Resource Type="Grain">936</Resource>
     </ResourceStack>
   </Field>
-  <Field Type="Forest" X="1" Y="-3">
+  <Field Type="Grass" X="1" Y="-3">
+    <Buildings />
+    <ResourceStack />
+  </Field>
+  <Field Type="Grass" X="1" Y="-4">
     <Buildings />
     <ResourceStack>
-      <Resource Type="Forest">988</Resource>
+      <Resource Type="Forest">1123</Resource>
     </ResourceStack>
   </Field>
-  <Field Type="Forest" X="1" Y="-4">
+  <Field Type="Grass" X="1" Y="-5">
     <Buildings />
     <ResourceStack>
-      <Resource Type="Stone">258</Resource>
-    </ResourceStack>
-  </Field>
-  <Field Type="Forest" X="1" Y="-5">
-    <Buildings />
-    <ResourceStack>
-      <Resource Type="Fishes">861</Resource>
+      <Resource Type="Forest">538</Resource>
     </ResourceStack>
   </Field>
   <Field Type="Mountain" X="2" Y="3">
@@ -371,17 +340,15 @@
       <Resource Type="Coal">729</Resource>
     </ResourceStack>
   </Field>
-  <Field Type="Forest" X="2" Y="2">
+  <Field Type="Grass" X="2" Y="2">
     <Buildings />
     <ResourceStack>
-      <Resource Type="Stone">599</Resource>
+      <Resource Type="Forest">2210</Resource>
     </ResourceStack>
   </Field>
-  <Field Type="Forest" X="2" Y="1">
+  <Field Type="Grass" X="2" Y="1">
     <Buildings />
-    <ResourceStack>
-      <Resource Type="Coal">579</Resource>
-    </ResourceStack>
+    <ResourceStack />
   </Field>
   <Field Type="Grass" X="2" Y="0">
     <Buildings />
@@ -391,9 +358,7 @@
   </Field>
   <Field Type="Grass" X="2" Y="-1">
     <Buildings />
-    <ResourceStack>
-      <Resource Type="Fishes">851</Resource>
-    </ResourceStack>
+    <ResourceStack />
   </Field>
   <Field Type="Grass" X="2" Y="-2">
     <Buildings />
@@ -401,22 +366,20 @@
       <Resource Type="Stone">940</Resource>
     </ResourceStack>
   </Field>
-  <Field Type="Forest" X="2" Y="-3">
+  <Field Type="Grass" X="2" Y="-3">
+    <Buildings />
+    <ResourceStack />
+  </Field>
+  <Field Type="Grass" X="2" Y="-4">
     <Buildings />
     <ResourceStack>
-      <Resource Type="Stone">241</Resource>
+      <Resource Type="Forest">2148</Resource>
     </ResourceStack>
   </Field>
-  <Field Type="Forest" X="2" Y="-4">
+  <Field Type="Grass" X="2" Y="-5">
     <Buildings />
     <ResourceStack>
-      <Resource Type="Stone">627</Resource>
-    </ResourceStack>
-  </Field>
-  <Field Type="Forest" X="2" Y="-5">
-    <Buildings />
-    <ResourceStack>
-      <Resource Type="Stone">465</Resource>
+      <Resource Type="Forest">1603</Resource>
     </ResourceStack>
   </Field>
   <Field Type="Mountain" X="3" Y="2">
@@ -425,17 +388,15 @@
       <Resource Type="Iron">438</Resource>
     </ResourceStack>
   </Field>
-  <Field Type="Forest" X="3" Y="1">
+  <Field Type="Grass" X="3" Y="1">
     <Buildings />
     <ResourceStack>
-      <Resource Type="Forest">919</Resource>
+      <Resource Type="Forest">1306</Resource>
     </ResourceStack>
   </Field>
-  <Field Type="Forest" X="3" Y="0">
+  <Field Type="Grass" X="3" Y="0">
     <Buildings />
-    <ResourceStack>
-      <Resource Type="Forest">159</Resource>
-    </ResourceStack>
+    <ResourceStack />
   </Field>
   <Field Type="Grass" X="3" Y="-1">
     <Buildings />
@@ -451,39 +412,33 @@
   </Field>
   <Field Type="Grass" X="3" Y="-3">
     <Buildings />
-    <ResourceStack>
-      <Resource Type="Fishes">191</Resource>
-    </ResourceStack>
+    <ResourceStack />
   </Field>
-  <Field Type="Forest" X="3" Y="-4">
+  <Field Type="Grass" X="3" Y="-4">
     <Buildings />
     <ResourceStack>
-      <Resource Type="Forest">560</Resource>
+      <Resource Type="Forest">1327</Resource>
     </ResourceStack>
   </Field>
-  <Field Type="Forest" X="3" Y="-5">
+  <Field Type="Grass" X="3" Y="-5">
     <Buildings />
     <ResourceStack>
-      <Resource Type="Coal">117</Resource>
+      <Resource Type="Forest">2232</Resource>
     </ResourceStack>
   </Field>
   <Field Type="Mountain" X="4" Y="1">
     <Buildings />
-    <ResourceStack>
-      <Resource Type="Forest">393</Resource>
-    </ResourceStack>
+    <ResourceStack />
   </Field>
-  <Field Type="Forest" X="4" Y="0">
+  <Field Type="Grass" X="4" Y="0">
     <Buildings />
     <ResourceStack>
-      <Resource Type="Iron">719</Resource>
+      <Resource Type="Forest">2172</Resource>
     </ResourceStack>
   </Field>
-  <Field Type="Forest" X="4" Y="-1">
+  <Field Type="Grass" X="4" Y="-1">
     <Buildings />
-    <ResourceStack>
-      <Resource Type="Grain">997</Resource>
-    </ResourceStack>
+    <ResourceStack />
   </Field>
   <Field Type="Grass" X="4" Y="-2">
     <Buildings />
@@ -500,13 +455,14 @@
   <Field Type="Grass" X="4" Y="-4">
     <Buildings />
     <ResourceStack>
+      <Resource Type="Forest">1558</Resource>
       <Resource Type="Stone">528</Resource>
     </ResourceStack>
   </Field>
-  <Field Type="Forest" X="4" Y="-5">
+  <Field Type="Grass" X="4" Y="-5">
     <Buildings />
     <ResourceStack>
-      <Resource Type="Iron">869</Resource>
+      <Resource Type="Forest">2193</Resource>
     </ResourceStack>
   </Field>
   <Field Type="Mountain" X="5" Y="0">
@@ -515,28 +471,24 @@
       <Resource Type="Iron">954</Resource>
     </ResourceStack>
   </Field>
-  <Field Type="Forest" X="5" Y="-1">
+  <Field Type="Grass" X="5" Y="-1">
     <Buildings />
     <ResourceStack>
-      <Resource Type="Fishes">653</Resource>
+      <Resource Type="Forest">2248</Resource>
     </ResourceStack>
   </Field>
-  <Field Type="Forest" X="5" Y="-2">
+  <Field Type="Grass" X="5" Y="-2">
     <Buildings />
-    <ResourceStack>
-      <Resource Type="Gold">326</Resource>
-    </ResourceStack>
+    <ResourceStack />
   </Field>
-  <Field Type="Forest" X="5" Y="-3">
+  <Field Type="Grass" X="5" Y="-3">
     <Buildings />
-    <ResourceStack>
-      <Resource Type="Stone">920</Resource>
-    </ResourceStack>
+    <ResourceStack />
   </Field>
   <Field Type="Sea" X="5" Y="-4">
     <Buildings />
     <ResourceStack>
-      <Resource Type="Grain">996</Resource>
+      <Resource Type="Fishes">963</Resource>
     </ResourceStack>
   </Field>
   <Field Type="Sea" X="5" Y="-5">

@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Xml;
 
 namespace Hex.GameSettings
@@ -67,6 +70,16 @@ namespace Hex.GameSettings
                 readResourceElement(elem);
             }
             return true;
+        }
+        public static Brush GetBrush(ResourceType type)
+        {
+            Uri ur = new Uri($@"pack://application:,,,/Resources/HexFields/{type}.png");
+            Brush result = null;
+            if (File.Exists(ur.PathAndQuery))
+            {
+                result = new ImageBrush(new BitmapImage(ur));
+            }
+            return result;
         }
         public static byte NumberOfLayers
         {

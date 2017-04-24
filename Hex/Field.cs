@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using Hex.Buildings;
-using System.Drawing;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Xml;
 using Hex.GameSettings;
+using System.IO;
 
 namespace Hex
 {
@@ -26,17 +26,11 @@ namespace Hex
         const string xmlBuildName = "Buildings";
         readonly int x, y;
         Resource[] stack = new Resource[ResourceSettings.NumberOfLayers];
-        ImageBrush fieldBrush = new ImageBrush();
+        DrawingBrush fieldBrush = new DrawingBrush();
         DrawingBrush combinedBrush = new DrawingBrush();
         byte top;
         Building building = null;
         FieldType type;
-        public Field()
-        {
-            x = y = 0;
-            top = ResourceSettings.NumberOfLayers;
-            updateBrushes();
-        }
         public Field(int _x, int _y, FieldType type = FieldType.Grass)
         {
             x = _x;
@@ -52,7 +46,7 @@ namespace Hex
         }
         private void updateCombinedBrush()
         {
-            DrawingGroup checkersDrawingGroup = new DrawingGroup();
+            DrawingGroup drG = new DrawingGroup();
             int x = 100;
             int y = 100;
             GeometryDrawing fieldDraw =
@@ -60,7 +54,7 @@ namespace Hex
                     fieldBrush,
                     null,
                     new RectangleGeometry(new System.Windows.Rect(0, 0, x, y)));
-            checkersDrawingGroup.Children.Add(fieldDraw);
+            drG.Children.Add(fieldDraw);
             if (building != null)
             {
                 GeometryDrawing buildingDraw =
@@ -68,14 +62,43 @@ namespace Hex
                         Building.Brush,
                         null,
                         new RectangleGeometry(new System.Windows.Rect(0, 0, x, y)));
-                checkersDrawingGroup.Children.Add(buildingDraw);
+                drG.Children.Add(buildingDraw);
             }
-            combinedBrush.Drawing = checkersDrawingGroup;
+            combinedBrush.Drawing = drG;
             combinedBrush.TileMode = TileMode.None;
         }
         private void updateFieldBrush()
         {
-            fieldBrush.ImageSource = new BitmapImage(new Uri($@"pack://application:,,,/Resources/HexFields/{Type}.png"));
+            ImageBrush tmp = new ImageBrush(new BitmapImage(new Uri($@"pack://application:,,,/Resources/HexFields/{type}.png")));
+            DrawingGroup drG = new DrawingGroup();
+            int x = 100;
+            int y = 100;
+            GeometryDrawing fieldDraw =
+                new GeometryDrawing(
+                    tmp,
+                    null,
+                    new RectangleGeometry(new System.Windows.Rect(0, 0, x, y)));
+            drG.Children.Add(fieldDraw);
+            if (top < ResourceSettings.NumberOfLayers && stack[top].Ammount > 0)
+            {
+                switch (stack[top].Type)
+                {
+                    case ResourceType.Forest:
+                    case ResourceType.Fishes:
+                        ImageBrush brs = new ImageBrush(new BitmapImage(new Uri($@"pack://application:,,,/Resources/ResoureceFieldImage/{stack[top].Type}.png")));
+                        GeometryDrawing buildingDraw =
+                            new GeometryDrawing(
+                                brs,
+                                null,
+                                new RectangleGeometry(new System.Windows.Rect(0, 0, x, y)));
+                        drG.Children.Add(buildingDraw);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            fieldBrush.Drawing = drG;
+            fieldBrush.TileMode = TileMode.None;
         }
         public int X
         {
@@ -98,41 +121,19 @@ namespace Hex
                 return -x - y;
             }
         }
-        public System.Windows.Media.Brush FieldBrush
+        public Brush FieldBrush
         {
             get
             {
                 return fieldBrush;
             }
         }
-        public System.Windows.Media.Brush CombinedBrush
+        public Brush CombinedBrush
         {
             get
             {
                 return combinedBrush;
             }
-        }
-        private System.Windows.Media.Color colorByType()
-        {
-            System.Drawing.Color col;
-            switch (Type)
-            {
-                case FieldType.Grass:
-                    col = System.Drawing.Color.LightGreen;
-                    break;
-                case FieldType.Mountain:
-                    col = System.Drawing.Color.Gray;
-                    break;
-                case FieldType.Sea:
-                    col = System.Drawing.Color.Blue;
-                    break;
-                case FieldType.Forest:
-                    col = System.Drawing.Color.DarkGreen;
-                    break;
-                default:
-                    throw new NotImplementedException("Dany typ pola nie został zaimplementowany w funkji colorByType w klasie Field");
-            }
-            return System.Windows.Media.Color.FromRgb(col.R, col.G, col.B);
         }
         public FieldType Type
         {
@@ -159,23 +160,35 @@ namespace Hex
             }
             return false;
         }
+        public uint PeekTopAmmount
+        {
+            get
+            {
+                return top == ResourceSettings.NumberOfLayers ? 0 : stack[top].Ammount;
+            }
+        }
+        public Resource? GatherTop()
+        {
+            Resource? result = top < ResourceSettings.NumberOfLayers ? (Resource?)stack[top].GatherAll() : null;
+            Refresh();
+            return result;
+        }
+        public Resource? Gather(uint ammount)
+        {
+            Resource? result = top < ResourceSettings.NumberOfLayers ? (Resource?)stack[top].Gather(ammount) : null;
+            Refresh();
+            return result;
+        }
         /// <summary>
         /// Zwraca surowiec z wierzchu stosu.
         /// </summary>
         /// <returns></returns>
-        public Resource? PeekResource
+        public ResourceType? PeekTopType
         {
             get
             {
-                bool change = false;
-                while (stack[top].Ammount == 0 && top < 8)
-                {
-                    change = true;
-                    ++top;
-                }
-                if (change)
-                    updateBrushes();
-                return top == ResourceSettings.NumberOfLayers ? null : (Resource?)stack[top];
+                Refresh();
+                return top == ResourceSettings.NumberOfLayers ? null : (ResourceType?)stack[top].Type;
             }
         }
         /// <summary>
@@ -216,7 +229,7 @@ namespace Hex
         {
             get
             {
-                for (int i = 0; i < 8; ++i)
+                for (int i = 0; i < ResourceSettings.NumberOfLayers; ++i)
                 {
                     if (stack[i].Ammount != 0)
                         yield return stack[i];
@@ -259,7 +272,7 @@ namespace Hex
         /// </summary>
         public void Refresh()
         {
-            while (stack[top].Ammount == 0 && top < 8) ++top;
+            while (top < ResourceSettings.NumberOfLayers && stack[top].Ammount == 0) ++top;
             updateBrushes();
         }
         public virtual XmlElement GetXmlElement(XmlDocument doc)
@@ -324,7 +337,6 @@ namespace Hex
     {
         Grass,
         Mountain,
-        Sea,
-        Forest
+        Sea
     }
 }

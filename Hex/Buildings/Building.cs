@@ -60,7 +60,7 @@ namespace Hex.Buildings
                 case BuildingType.LumberjackHut:
                     return new LumberjackHut();
                 default:
-                    throw new NotImplementedException($"Nie zaimplementowano BuildingType.{typ} w Building.FactorBuilding()");
+                    throw new NotImplementedException($"Nie zaimplementowano BuildingType.{typ} w Building.FactoryBuilding(). Dodaj śmiało, pozwalam.");
             }
         }
         public virtual System.Windows.Media.Brush Brush
