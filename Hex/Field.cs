@@ -85,6 +85,7 @@ namespace Hex
                 {
                     case ResourceType.Forest:
                     case ResourceType.Fishes:
+                    case ResourceType.Wheat:
                         ImageBrush brs = new ImageBrush(new BitmapImage(new Uri($@"pack://application:,,,/Resources/ResoureceFieldImage/{stack[top].Type}.png")));
                         GeometryDrawing buildingDraw =
                             new GeometryDrawing(
@@ -328,6 +329,19 @@ namespace Hex
                 }
             }
             return result;
+        }
+    }
+    public static class ExtentionField
+    {
+        public static int GetFieldID(this WpfHex.HexagonalHexGrig hhg, int x, int y)
+        {
+            int z = -x - y;
+            int n = hhg.Size;
+            return z + (n * 3 + x - 2) * (n + x - 1) / 2 - (x > 0 ? x * (x - 1) : -x) + n - 1;
+        }
+        public static int GetFieldID(this WpfHex.HexagonalHexGrig hhg, Field field)
+        {
+            return hhg.GetFieldID(field.X, field.Y);
         }
     }
     /// <summary>

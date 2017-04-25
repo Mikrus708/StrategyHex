@@ -354,6 +354,10 @@ namespace WpfHex
             }
             return result;
         }
+        public int Size
+        {
+            get { return size; }
+        }
     }
 
 

@@ -51,9 +51,7 @@
   </Field>
   <Field Type="Mountain" X="-4" Y="2">
     <Buildings />
-    <ResourceStack>
-      <Resource Type="Grain">614</Resource>
-    </ResourceStack>
+    <ResourceStack />
   </Field>
   <Field Type="Mountain" X="-4" Y="1">
     <Buildings />
@@ -140,14 +138,21 @@
     </ResourceStack>
   </Field>
   <Field Type="Grass" X="-2" Y="1">
-    <Buildings />
+    <Buildings>
+      <Building Type="Hut" />
+    </Buildings>
     <ResourceStack>
+      <Resource Type="Wheat">980</Resource>
       <Resource Type="Iron">756</Resource>
     </ResourceStack>
   </Field>
   <Field Type="Grass" X="-2" Y="0">
-    <Buildings />
-    <ResourceStack />
+    <Buildings>
+      <Building Type="Hut" />
+    </Buildings>
+    <ResourceStack>
+      <Resource Type="Wheat">335</Resource>
+    </ResourceStack>
   </Field>
   <Field Type="Sea" X="-2" Y="-1">
     <Buildings />
@@ -190,14 +195,20 @@
     </ResourceStack>
   </Field>
   <Field Type="Grass" X="-1" Y="1">
-    <Buildings />
+    <Buildings>
+      <Building Type="Hut" />
+    </Buildings>
     <ResourceStack>
-      <Resource Type="Grain">428</Resource>
+      <Resource Type="Wheat">1395</Resource>
     </ResourceStack>
   </Field>
   <Field Type="Grass" X="-1" Y="0">
-    <Buildings />
-    <ResourceStack />
+    <Buildings>
+      <Building Type="Hut" />
+    </Buildings>
+    <ResourceStack>
+      <Resource Type="Wheat">791</Resource>
+    </ResourceStack>
   </Field>
   <Field Type="Grass" X="-1" Y="-1">
     <Buildings />
@@ -266,15 +277,11 @@
   </Field>
   <Field Type="Sea" X="0" Y="-3">
     <Buildings />
-    <ResourceStack>
-      <Resource Type="Grain">451</Resource>
-    </ResourceStack>
+    <ResourceStack />
   </Field>
   <Field Type="Sea" X="0" Y="-4">
     <Buildings />
-    <ResourceStack>
-      <Resource Type="Grain">784</Resource>
-    </ResourceStack>
+    <ResourceStack />
   </Field>
   <Field Type="Sea" X="0" Y="-5">
     <Buildings />
@@ -314,9 +321,7 @@
   </Field>
   <Field Type="Grass" X="1" Y="-2">
     <Buildings />
-    <ResourceStack>
-      <Resource Type="Grain">936</Resource>
-    </ResourceStack>
+    <ResourceStack />
   </Field>
   <Field Type="Grass" X="1" Y="-3">
     <Buildings />
@@ -347,14 +352,16 @@
     </ResourceStack>
   </Field>
   <Field Type="Grass" X="2" Y="1">
-    <Buildings />
-    <ResourceStack />
+    <Buildings>
+      <Building Type="Hut" />
+    </Buildings>
+    <ResourceStack>
+      <Resource Type="Wheat">491</Resource>
+    </ResourceStack>
   </Field>
   <Field Type="Grass" X="2" Y="0">
     <Buildings />
-    <ResourceStack>
-      <Resource Type="Grain">292</Resource>
-    </ResourceStack>
+    <ResourceStack />
   </Field>
   <Field Type="Grass" X="2" Y="-1">
     <Buildings />
@@ -368,7 +375,9 @@
   </Field>
   <Field Type="Grass" X="2" Y="-3">
     <Buildings />
-    <ResourceStack />
+    <ResourceStack>
+      <Resource Type="Wheat">1772</Resource>
+    </ResourceStack>
   </Field>
   <Field Type="Grass" X="2" Y="-4">
     <Buildings />
@@ -395,14 +404,16 @@
     </ResourceStack>
   </Field>
   <Field Type="Grass" X="3" Y="0">
-    <Buildings />
-    <ResourceStack />
+    <Buildings>
+      <Building Type="Hut" />
+    </Buildings>
+    <ResourceStack>
+      <Resource Type="Wheat">1853</Resource>
+    </ResourceStack>
   </Field>
   <Field Type="Grass" X="3" Y="-1">
     <Buildings />
-    <ResourceStack>
-      <Resource Type="Grain">293</Resource>
-    </ResourceStack>
+    <ResourceStack />
   </Field>
   <Field Type="Grass" X="3" Y="-2">
     <Buildings />
@@ -411,8 +422,12 @@
     </ResourceStack>
   </Field>
   <Field Type="Grass" X="3" Y="-3">
-    <Buildings />
-    <ResourceStack />
+    <Buildings>
+      <Building Type="Hut" />
+    </Buildings>
+    <ResourceStack>
+      <Resource Type="Wheat">1168</Resource>
+    </ResourceStack>
   </Field>
   <Field Type="Grass" X="3" Y="-4">
     <Buildings />
@@ -448,9 +463,7 @@
   </Field>
   <Field Type="Grass" X="4" Y="-3">
     <Buildings />
-    <ResourceStack>
-      <Resource Type="Grain">302</Resource>
-    </ResourceStack>
+    <ResourceStack />
   </Field>
   <Field Type="Grass" X="4" Y="-4">
     <Buildings />

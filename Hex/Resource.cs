@@ -135,7 +135,7 @@ namespace Hex
     {
         Forest,
         Stone,
-        Grain,
+        Wheat,
         Fishes,
         Gold,
         Iron,
