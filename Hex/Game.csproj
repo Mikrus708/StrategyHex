@@ -64,6 +64,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="GameMaster.cs" />
     <Compile Include="GameSettings\BuildingsSettings.cs" />
     <Compile Include="Buildings\Building.cs" />
     <Compile Include="Buildings\CoalMine.cs" />
@@ -82,7 +83,7 @@
     <Compile Include="Field.cs" />
     <Compile Include="GameSettings\MaterialSettings.cs" />
     <Compile Include="GameSettings\ResourceSettings.cs" />
-    <Compile Include="Hex.cs" />
+    <Compile Include="GUI\Hex.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -90,6 +91,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Material.cs" />
+    <Compile Include="Players\HumanPlayer.cs" />
+    <Compile Include="Players\Player.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -25,7 +25,7 @@ namespace WpfHex
     public partial class MainWindow : Window
     {
         Color actual = Colors.Chartreuse;
-        HexagonalHexGrig hhg;
+        HexagonalHexGrid hhg;
         double zoom = 1;
 
         public MainWindow()
@@ -88,7 +88,7 @@ namespace WpfHex
         {
             Canv.Children.RemoveRange(0, Canv.Children.Count );
             int size = 35;
-            hhg = new HexagonalHexGrig(6, Brushes.Purple, size, Canv, new Point(400,350));
+            hhg = new HexagonalHexGrid(6, Brushes.Purple, size, Canv, new Point(400,350));
             var ran = new Random();
             foreach (var he in hhg.Hexes)
             {
@@ -166,7 +166,7 @@ namespace WpfHex
         }
         private void loadMap(string name)
         {
-            hhg = HexagonalHexGrig.LoadXML(name, Brushes.Purple, 35, Canv, new Point(400, 350));
+            hhg = HexagonalHexGrid.LoadXML(name, Brushes.Purple, 35, Canv, new Point(400, 350));
             var ran = new Random();
             foreach (var he in hhg.Hexes)
             {
