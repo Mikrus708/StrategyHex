@@ -165,7 +165,7 @@ namespace WpfHex
         }
     }
 
-    public class HexagonalHexGrig : BoardDontUse
+    public class HexagonalHexGrid : BoardDontUse
     {
         public Hex[][] hexG;
         public Hex Center;
@@ -173,7 +173,7 @@ namespace WpfHex
         private const string xmlSizeAtrStr = "Size";
 
         private int size;
-        public HexagonalHexGrig(int n, Brush b, int Size, Canvas Canv, Point Center) : base()
+        public HexagonalHexGrid(int n, Brush b, int Size, Canvas Canv, Point Center) : base()
         {
             //this.Center = Center;
             size = n;
@@ -331,9 +331,9 @@ namespace WpfHex
             doc.Save(name);
             return true;
         }
-        static public HexagonalHexGrig LoadXML(string name, Brush b, int Size, Canvas Canv, Point Center)
+        static public HexagonalHexGrid LoadXML(string name, Brush b, int Size, Canvas Canv, Point Center)
         {
-            HexagonalHexGrig result = null;
+            HexagonalHexGrid result = null;
             XmlDocument doc = new XmlDocument();
             doc.Load(name);
             if (doc.DocumentElement.Name == xmlRootElemStr)
@@ -341,7 +341,7 @@ namespace WpfHex
                 int s;
                 if (int.TryParse(doc.DocumentElement.GetAttribute(xmlSizeAtrStr), out s) && s >= 0)
                 {
-                    result = new HexagonalHexGrig(s, b, Size, Canv, Center);
+                    result = new HexagonalHexGrid(s, b, Size, Canv, Center);
                     foreach (XmlElement elem in doc.DocumentElement)
                     {
                         Field f = Field.GetFromXmlElement(elem);
