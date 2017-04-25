@@ -1,13 +1,9 @@
-﻿using Hex.GameSettings;
+﻿using StrategyHexGame.Game.Settings;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Xml;
 
-namespace Hex
+namespace StrategyHexGame.Game.Base
 {
     /// <summary>
     /// Klasa przechowująca typy zasobów oraz ich ilości.

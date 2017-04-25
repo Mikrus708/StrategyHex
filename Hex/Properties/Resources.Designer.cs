@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Hex.Properties {
+namespace StrategyHexGame.Properties {
     using System;
     
     

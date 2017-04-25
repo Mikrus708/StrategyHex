@@ -1,23 +1,14 @@
-﻿using Hex;
-using Hex.Buildings;
-using Hex.GameSettings;
+﻿using StrategyHexGame.GUI.Controls;
+using StrategyHexGame.Game.Buildings;
+using StrategyHexGame.Game.Settings;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Xml;
+using StrategyHexGame.Game.Base;
 
-namespace WpfHex
+namespace StrategyHexGame.GUI.Windows
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -30,9 +21,9 @@ namespace WpfHex
 
         public MainWindow()
         {
-            BuildingsSettings.Load("../../GameSettings/BuildingsSettings.xml");
-            ResourceSettings.Load("../../GameSettings/ResourceSettings.xml");
-            MaterialSettings.Load("../../GameSettings/MaterialSettings.xml");
+            BuildingsSettings.Load("../../Game/Settings/BuildingsSettings.xml");
+            ResourceSettings.Load("../../Game/Settings/ResourceSettings.xml");
+            MaterialSettings.Load("../../Game/Settings/MaterialSettings.xml");
             InitializeComponent();
             initComboBuild();
             initMaterialList();

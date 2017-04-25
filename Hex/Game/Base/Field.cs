@@ -1,17 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using Hex.Buildings;
+using StrategyHexGame.Game.Buildings;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Xml;
-using Hex.GameSettings;
-using System.IO;
+using StrategyHexGame.Game.Settings;
+using StrategyHexGame.GUI.Controls;
 
-namespace Hex
+namespace StrategyHexGame.Game.Base
 {
     /// <summary>
     /// Klasa pola
@@ -333,13 +329,13 @@ namespace Hex
     }
     public static class ExtentionField
     {
-        public static int GetFieldID(this WpfHex.HexagonalHexGrig hhg, int x, int y)
+        public static int GetFieldID(this HexagonalHexGrid hhg, int x, int y)
         {
             int z = -x - y;
             int n = hhg.Size;
             return z + (n * 3 + x - 2) * (n + x - 1) / 2 - (x > 0 ? x * (x - 1) : -x) + n - 1;
         }
-        public static int GetFieldID(this WpfHex.HexagonalHexGrig hhg, Field field)
+        public static int GetFieldID(this HexagonalHexGrid hhg, Field field)
         {
             return hhg.GetFieldID(field.X, field.Y);
         }

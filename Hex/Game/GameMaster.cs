@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using Hex.Players;
-using WpfHex;
+using StrategyHexGame.GUI.Controls;
+using StrategyHexGame.Game.Players;
 
-namespace Hex
+namespace StrategyHexGame.Game
 {
     public class GameMaster
     {
         private List<Player> _players;
         private int _currentPlayer;
-        private WpfHex.Hex[] _board;
+        private Hex[] _board;
         private List<int[]> _visibleHexs; // [gracz][ID hexa]
 
         public GameMaster(HexagonalHexGrid grid)

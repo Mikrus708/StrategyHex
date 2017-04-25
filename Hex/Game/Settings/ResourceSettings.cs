@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using StrategyHexGame.Game.Base;
+using System;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Xml;
 
-namespace Hex.GameSettings
+namespace StrategyHexGame.Game.Settings
 {
     public static class ResourceSettings
     {

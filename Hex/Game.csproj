@@ -56,7 +56,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
+    <Page Include="GUI\Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -64,41 +64,41 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="GameMaster.cs" />
-    <Compile Include="GameSettings\BuildingsSettings.cs" />
-    <Compile Include="Buildings\Building.cs" />
-    <Compile Include="Buildings\CoalMine.cs" />
-    <Compile Include="Buildings\Farm.cs" />
-    <Compile Include="Buildings\FishermanHuts.cs" />
-    <Compile Include="Buildings\GoldMine.cs" />
-    <Compile Include="Buildings\Hut.cs" />
-    <Compile Include="Buildings\IronMine.cs" />
-    <Compile Include="Buildings\LumberjackHut.cs" />
-    <Compile Include="Buildings\Sawmill.cs" />
-    <Compile Include="Buildings\SmallTower.cs" />
-    <Compile Include="Buildings\SteelWorks.cs" />
-    <Compile Include="Buildings\StoneMine.cs" />
-    <Compile Include="Buildings\TownHall.cs" />
-    <Compile Include="Cost.cs" />
-    <Compile Include="Field.cs" />
-    <Compile Include="GameSettings\MaterialSettings.cs" />
-    <Compile Include="GameSettings\ResourceSettings.cs" />
-    <Compile Include="GUI\Hex.cs" />
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Game\GameMaster.cs" />
+    <Compile Include="Game\Settings\BuildingsSettings.cs" />
+    <Compile Include="Game\Buildings\Building.cs" />
+    <Compile Include="Game\Buildings\CoalMine.cs" />
+    <Compile Include="Game\Buildings\Farm.cs" />
+    <Compile Include="Game\Buildings\FishermanHuts.cs" />
+    <Compile Include="Game\Buildings\GoldMine.cs" />
+    <Compile Include="Game\Buildings\Hut.cs" />
+    <Compile Include="Game\Buildings\IronMine.cs" />
+    <Compile Include="Game\Buildings\LumberjackHut.cs" />
+    <Compile Include="Game\Buildings\Sawmill.cs" />
+    <Compile Include="Game\Buildings\SmallTower.cs" />
+    <Compile Include="Game\Buildings\SteelWorks.cs" />
+    <Compile Include="Game\Buildings\StoneMine.cs" />
+    <Compile Include="Game\Buildings\TownHall.cs" />
+    <Compile Include="Game\Base\Cost.cs" />
+    <Compile Include="Game\Base\Field.cs" />
+    <Compile Include="Game\Settings\MaterialSettings.cs" />
+    <Compile Include="Game\Settings\ResourceSettings.cs" />
+    <Compile Include="GUI\Controls\Hex.cs" />
+    <Compile Include="GUI\Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Material.cs" />
-    <Compile Include="Players\HumanPlayer.cs" />
-    <Compile Include="Players\Player.cs" />
+    <Compile Include="Game\Base\Material.cs" />
+    <Compile Include="Game\Players\HumanPlayer.cs" />
+    <Compile Include="Game\Players\Player.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resource.cs" />
+    <Compile Include="Game\Base\Resource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -142,7 +142,7 @@
     <Resource Include="Resources\HexFields\sea.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="GameSettings\BuildingsSettings.xml" />
+    <Resource Include="Game\Settings\BuildingsSettings.xml" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\MaterialImage\coal.png" />
@@ -156,10 +156,10 @@
     <Resource Include="Resources\MaterialImage\wood.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="GameSettings\ResourceSettings.xml" />
+    <Resource Include="Game\Settings\ResourceSettings.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="GameSettings\MaterialSettings.xml" />
+    <Resource Include="Game\Settings\MaterialSettings.xml" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\ResoureceFieldImage\fishes.png" />
@@ -170,6 +170,7 @@
   <ItemGroup>
     <Resource Include="Resources\ResoureceFieldImage\Wheat.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

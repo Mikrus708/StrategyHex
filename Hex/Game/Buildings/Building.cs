@@ -1,15 +1,11 @@
-﻿using Hex.GameSettings;
+﻿using StrategyHexGame.Game.Base;
+using StrategyHexGame.Game.Settings;
 using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Xml;
 
-namespace Hex.Buildings
+namespace StrategyHexGame.Game.Buildings
 {
     /// <summary>
     /// Abstrakcyjna klasa budynków.

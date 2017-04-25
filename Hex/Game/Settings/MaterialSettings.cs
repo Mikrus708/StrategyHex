@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using StrategyHexGame.Game.Base;
+using System;
 using System.Xml;
 
-namespace Hex.GameSettings
+namespace StrategyHexGame.Game.Settings
 {
     public static class MaterialSettings
     {

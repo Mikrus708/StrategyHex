@@ -1,15 +1,9 @@
-﻿using Hex.Buildings;
+﻿using StrategyHexGame.Game.Buildings;
+using StrategyHexGame.Game.Base;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
-using System.Xml.Schema;
-using System.Xml.Serialization;
 
-namespace Hex.GameSettings
+namespace StrategyHexGame.Game.Settings
 {
     public static class BuildingsSettings
     {

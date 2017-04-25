@@ -1,14 +1,10 @@
-﻿using Hex.GameSettings;
+﻿using StrategyHexGame.Game.Settings;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Xml;
 
-namespace Hex
+namespace StrategyHexGame.Game.Base
 {
     /// <summary>
     /// Klasa przecowująca typy surowców oraz ich ilości.
