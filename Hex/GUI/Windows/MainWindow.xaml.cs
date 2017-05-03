@@ -162,7 +162,6 @@ namespace StrategyHexGame.GUI.Windows
             foreach (var he in hhg.Hexes)
             {
                 he.MouseDown += reactionToHexClick;
-                he.bru = he.Fill = he.Field.CombinedBrush;
             }
         }
     }

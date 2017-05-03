@@ -52,6 +52,8 @@ namespace StrategyHexGame.GUI.Controls
             set
             {
                 hexField = value;
+                Fill = value.CombinedBrush;
+                this.ToolTip = value.ToolTip;
             }
             get
             {

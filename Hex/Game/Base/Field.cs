@@ -6,6 +6,8 @@ using System.Windows.Media.Imaging;
 using System.Xml;
 using StrategyHexGame.Game.Settings;
 using StrategyHexGame.GUI.Controls;
+using System.Windows.Controls;
+using System.Text;
 
 namespace StrategyHexGame.Game.Base
 {
@@ -24,9 +26,24 @@ namespace StrategyHexGame.Game.Base
         Resource[] stack = new Resource[ResourceSettings.NumberOfLayers];
         DrawingBrush fieldBrush = new DrawingBrush();
         DrawingBrush combinedBrush = new DrawingBrush();
+        ToolTip toolt = new ToolTip();
         byte top;
         Building building = null;
         FieldType type;
+        private void updateToolTip()
+        {
+            StringBuilder stb = new StringBuilder($"Pole {x} | {y} | {-x -y}\n");
+            if (building != null)
+            {
+                stb.Append($"Budynek {building.Type}\n");
+            }
+            foreach (var res in Resources)
+            {
+                stb.Append($"{res.Type}: {res.Ammount}\n");
+            }
+            stb.Remove(stb.Length - 1, 1);
+            toolt.Content = stb.ToString();
+        }
         public Field(int _x, int _y, FieldType type = FieldType.Grass)
         {
             x = _x;
@@ -34,6 +51,7 @@ namespace StrategyHexGame.Game.Base
             this.type = type;
             top = ResourceSettings.NumberOfLayers;
             updateBrushes();
+            updateToolTip();
         }
         private void updateBrushes()
         {
@@ -153,6 +171,7 @@ namespace StrategyHexGame.Game.Base
                     top = (byte)lay;
                     updateBrushes();
                 }
+                updateToolTip();
                 return true;
             }
             return false;
@@ -167,12 +186,14 @@ namespace StrategyHexGame.Game.Base
         public Resource? GatherTop()
         {
             Resource? result = top < ResourceSettings.NumberOfLayers ? (Resource?)stack[top].GatherAll() : null;
+            updateToolTip();
             Refresh();
             return result;
         }
         public Resource? Gather(uint ammount)
         {
             Resource? result = top < ResourceSettings.NumberOfLayers ? (Resource?)stack[top].Gather(ammount) : null;
+            updateToolTip();
             Refresh();
             return result;
         }
@@ -254,6 +275,7 @@ namespace StrategyHexGame.Game.Base
             }
             this.building = building;
             updateCombinedBrush();
+            updateToolTip();
             return true;
         }
         /// <summary>
@@ -262,6 +284,7 @@ namespace StrategyHexGame.Game.Base
         public void DestroyBuilding()
         {
             building = null;
+            updateToolTip();
             updateCombinedBrush();
         }
         /// <summary>
@@ -271,6 +294,7 @@ namespace StrategyHexGame.Game.Base
         {
             while (top < ResourceSettings.NumberOfLayers && stack[top].Ammount == 0) ++top;
             updateBrushes();
+            updateToolTip();
         }
         public virtual XmlElement GetXmlElement(XmlDocument doc)
         {
@@ -325,6 +349,13 @@ namespace StrategyHexGame.Game.Base
                 }
             }
             return result;
+        }
+        public ToolTip ToolTip
+        {
+            get
+            {
+                return toolt;
+            }
         }
     }
     public static class ExtentionField
